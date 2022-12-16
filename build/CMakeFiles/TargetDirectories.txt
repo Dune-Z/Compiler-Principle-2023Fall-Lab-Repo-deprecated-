@@ -1,0 +1,3 @@
+/Users/zuoyifei/documents/Dev/CMinus/Share/build/CMakeFiles/Interpreter.dir
+/Users/zuoyifei/documents/Dev/CMinus/Share/build/CMakeFiles/edit_cache.dir
+/Users/zuoyifei/documents/Dev/CMinus/Share/build/CMakeFiles/rebuild_cache.dir
