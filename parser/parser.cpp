@@ -61,11 +61,11 @@ namespace TinyC{
             // TODO: Handling Error.
             ;
         Token::Token type = previous();
-        Token::Token function = consume(Token::TOKEN_IDENTIFIER, "Expected function name after return type.");
-        consume(Token::TOKEN_LEFT_PAREN, "Expected '(' after function name.");
+        Token::Token function = consume(Token::TOKEN_IDENTIFIER, "Expect function name after return type.");
+        consume(Token::TOKEN_LEFT_PAREN, "Expect '(' after function name.");
         // TODO: Support Passing Arguments to Function.
-        consume(Token::TOKEN_RIGHT_PAREN, "Expected ')' after arguments.");
-        consume(Token::TOKEN_LEFT_BRACE, "Expected '{' after '('.");
+        consume(Token::TOKEN_RIGHT_PAREN, "Expect ')' after arguments.");
+        consume(Token::TOKEN_LEFT_BRACE, "Expect '{' after '('.");
         std::vector<Stmt::StmtObject> block = Block();
 
         return std::make_unique<Stmt::FuncDecl>(type, function, std::move(block));
@@ -73,10 +73,10 @@ namespace TinyC{
 
     Stmt::StmtObject Parser::VarDecl() {
         Token::Token type = previous();
-        Token::Token variable = consume(Token::TOKEN_IDENTIFIER, "Expected variable name after type.");
+        Token::Token variable = consume(Token::TOKEN_IDENTIFIER, "Expect variable name after type.");
         Expr::ExprObject initializer;
         if(match(Token::TOKEN_OPERATOR_EQUAL)) initializer = Expression();
-        consume(Token::TOKEN_SEMICOLON, "Expected ';' after statement.");
+        consume(Token::TOKEN_SEMICOLON, "Expect ';' after statement.");
         return std::make_unique<Stmt::VarDecl>(type, variable, std::move(initializer));
         // TODO: Support list declaration.
     }
@@ -94,9 +94,9 @@ namespace TinyC{
     }
 
     Stmt::StmtObject Parser::IfStmt() {
-        consume(Token::TOKEN_LEFT_PAREN, "Expected '(' after 'if'.");
+        consume(Token::TOKEN_LEFT_PAREN, "Expect '(' after 'if'.");
         Expr::ExprObject condition = Expression();
-        consume(Token::TOKEN_RIGHT_PAREN, "Expected ')' after condition.");
+        consume(Token::TOKEN_RIGHT_PAREN, "Expect ')' after condition.");
 
         Stmt::StmtObject thenBranch = Stmt();
         Stmt::StmtObject elseBranch;
@@ -109,9 +109,9 @@ namespace TinyC{
     }
 
     Stmt::StmtObject Parser::WhileStmt() {
-        consume(Token::TOKEN_LEFT_PAREN, "Expected '(' after 'while'.");
+        consume(Token::TOKEN_LEFT_PAREN, "Expect '(' after 'while'.");
         Expr::ExprObject condition = Expression();
-        consume(Token::TOKEN_LEFT_PAREN, "Expected '(' after 'while'.");
+        consume(Token::TOKEN_RIGHT_PAREN, "Expect ')' after 'while'.");
         return std::make_unique<Stmt::WhileStmt>(std::move(condition), Stmt());
     }
 
@@ -132,7 +132,7 @@ namespace TinyC{
     std::vector<Stmt::StmtObject> Parser::Block() {
         std::vector<Stmt::StmtObject> statements;
         while(!check(Token::TOKEN_RIGHT_BRACE) && !isAtEnd()) statements.push_back(Stmt());
-        consume(Token::TOKEN_RIGHT_BRACE, "Expected '}' after block.");
+        consume(Token::TOKEN_RIGHT_BRACE, "Expect '}' after block.");
         return statements;
     }
 
@@ -217,7 +217,7 @@ namespace TinyC{
         if(match(Token::TOKEN_IDENTIFIER)) return std::make_unique<Expr::Variable>(previous());
         if(match(Token::TOKEN_LEFT_PAREN)) {
             Expr::ExprObject expr = Expression();
-            consume(Token::TOKEN_RIGHT_PAREN, "Expected ')' after expression");
+            consume(Token::TOKEN_RIGHT_PAREN, "Expect ')' after expression");
             return std::make_unique<Expr::Group>(std::move(expr));
         }
         // TODO: Handling Error.
