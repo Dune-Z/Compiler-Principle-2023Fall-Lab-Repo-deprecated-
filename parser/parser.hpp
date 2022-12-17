@@ -55,6 +55,7 @@ namespace TinyC::Stmt{
     struct IfStmt;
     struct WhileStmt;
     struct AssignStmt;
+    struct ReturnStmt;
     struct Block;
     using StmtObject = std::variant<
             std::unique_ptr<FuncDecl>,
@@ -62,6 +63,7 @@ namespace TinyC::Stmt{
             std::unique_ptr<IfStmt>,
             std::unique_ptr<WhileStmt>,
             std::unique_ptr<AssignStmt>,
+            std::unique_ptr<ReturnStmt>,
             std::unique_ptr<Block>
             >;
 
@@ -96,6 +98,11 @@ namespace TinyC::Stmt{
         Token::Token identifier;
         Expr::ExprObject expr;
         AssignStmt(const Token::Token &identifier, Expr::ExprObject expr);
+    };
+
+    struct ReturnStmt{
+        Expr::ExprObject expr;
+        explicit ReturnStmt(Expr::ExprObject expr);
     };
 
     struct Block{
@@ -140,6 +147,7 @@ namespace TinyC{
         Stmt::StmtObject IfStmt();
         Stmt::StmtObject WhileStmt();
         Stmt::StmtObject AssignStmt();
+        Stmt::StmtObject ReturnStmt();
         std::vector<Stmt::StmtObject> Block();
     public:
         explicit Parser(const std::vector<Token::Token>& tokens);

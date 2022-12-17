@@ -27,6 +27,9 @@ namespace TinyC::Stmt{
     AssignStmt::AssignStmt(const Token::Token &identifier, Expr::ExprObject expr)
     : identifier{identifier}, expr{std::move(expr)} {}
 
+    ReturnStmt::ReturnStmt(Expr::ExprObject expr)
+    : expr{std::move(expr)} {}
+
     Block::Block(std::vector<StmtObject> statements)
     : statements{std::move(statements)} {}
 }
@@ -83,6 +86,7 @@ namespace TinyC{
         if(match(Token::TOKEN_WHILE)) return WhileStmt();
         if(match(Token::TOKEN_TYPE_INT, Token::TOKEN_TYPE_FLOAT, Token::TOKEN_TYPE_STRING, Token::TOKEN_TYPE_BOOLEAN)) return VarDecl();
         if(match(Token::TOKEN_IDENTIFIER)) return AssignStmt();
+        if(match(Token::TOKEN_RETURN)) return ReturnStmt();
         if(match(Token::TOKEN_LEFT_BRACE)) return std::make_unique<Stmt::Block>(std::move(Block()));
         // TODO: Handling Return of function.
         // TODO: Handling Error.
@@ -117,6 +121,12 @@ namespace TinyC{
         Expr::ExprObject expr = Expression();
         consume(Token::TOKEN_SEMICOLON, "Expect ';' after assignment.");
         return std::make_unique<Stmt::AssignStmt>(identifier, std::move(expr));
+    }
+
+    Stmt::StmtObject Parser::ReturnStmt() {
+        Expr::ExprObject expr = Expression();
+        consume(Token::TOKEN_SEMICOLON, "Expect ';' after return.");
+        return std::make_unique<Stmt::ReturnStmt>(std::move(expr));
     }
 
     std::vector<Stmt::StmtObject> Parser::Block() {

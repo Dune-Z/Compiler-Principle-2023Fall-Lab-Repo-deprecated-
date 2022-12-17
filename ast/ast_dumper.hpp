@@ -35,6 +35,7 @@ namespace TinyC::Stmt{
         void operator()(std::unique_ptr<IfStmt> &ifStmtObject);
         void operator()(std::unique_ptr<WhileStmt> &whileStmtObject);
         void operator()(std::unique_ptr<AssignStmt> &assignStmtObject);
+        void operator()(std::unique_ptr<ReturnStmt> &returnStmtObject);
         void operator()(std::unique_ptr<Block> &blockObject);
     };
 }

@@ -21,8 +21,7 @@ int main(int argc, const char* argv[]){
     auto tokens = scanner.scanTokens();
     TinyC::Parser parser{tokens};
     auto statements = parser.parse();
-    auto &y = statements[0];
     TinyC::Stmt::DumpVisitor v{std::cout};
-    std::visit(v, y);
+    for(auto &x: statements) std::visit(v, x);
     return 0;
 }

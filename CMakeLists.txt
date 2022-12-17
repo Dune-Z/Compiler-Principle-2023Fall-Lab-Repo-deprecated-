@@ -6,14 +6,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include_directories(./)
 add_executable(Interpreter
     main.cpp
-    common.hpp 
     parser/token.cpp
     parser/token.hpp
     parser/scanner.cpp
-    parser/scanner.hpp 
-    parser/parser.cpp 
-    parser/parser.hpp 
-    parser/ast.cpp 
-    parser/ast.hpp
-    )
+    parser/scanner.hpp common.hpp parser/parser.cpp parser/parser.hpp ast/ast_dumper.cpp ast/ast_dumper.hpp interpreter/interpreter.cpp interpreter/interpreter.hpp ast/ast_traverser.cpp ast/ast_traverser.hpp)
 

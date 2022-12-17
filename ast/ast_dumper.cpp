@@ -125,6 +125,9 @@ namespace TinyC::Stmt{
         out << "\033[33m<Line: " << assignStmtObject->identifier.line << ">\033[0m\n";
         std::visit(Expr::DumpVisitor{out}, assignStmtObject->expr);
     }
+    void DumpVisitor::operator()(std::unique_ptr<ReturnStmt> &returnStmtObject) {
+        out << "Return\n";
+    }
     void DumpVisitor::operator()(std::unique_ptr<Block> &blockObject) {
         out << "Block\n";
     }
