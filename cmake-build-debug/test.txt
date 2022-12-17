@@ -1,0 +1,8 @@
+int main(){
+    float k = 10.1;
+    string str = "Hello World!\n";
+}
+
+int fn(){
+    int j = 10;
+}

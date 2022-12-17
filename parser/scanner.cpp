@@ -55,8 +55,8 @@ namespace TinyC::Token{
         if(*current == '.' && isDigit(*(current + 1))) {
             advance();
             while (isDigit(*current)) advance();
-        }
-        value = std::stod(std::string{start, current});
+            value = std::stof(std::string{start, current});
+        } else value = std::stoi(std::string{start, current});
         addToken(TOKEN_NUMBER, value);
         // TODO: Handling Error.
     }

@@ -13,7 +13,7 @@ namespace TinyC::Token{
         std::string source;
         std::vector<Token> tokens;
 
-        int line = 0;
+        int line = 1;
         std::string::const_iterator start;
         std::string::const_iterator current;
         std::unordered_map<std::string, tokenType> keywords;

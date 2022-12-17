@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
+  "command": "clang++ -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/main.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/main.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/main.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
+  "command": "clang++ -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/parser/token.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/parser/token.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/parser/token.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
+  "command": "clang++ -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/parser/scanner.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/parser/scanner.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/parser/scanner.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
+  "command": "clang++ -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/parser/parser.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/parser/parser.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/parser/parser.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
+  "command": "clang++ -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_dumper.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_dumper.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
+  "command": "clang++ -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/interpreter.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/interpreter.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
+  "command": "clang++ -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/ast/ast_traverser.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_traverser.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_traverser.cpp"
+}
+]

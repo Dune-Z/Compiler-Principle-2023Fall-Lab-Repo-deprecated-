@@ -3,105 +3,103 @@
 #include "token.hpp"
 #include <ostream>
 #include <memory>
+#include <variant>
 
 namespace TinyC::Expr{
-    class Expr;
-    using ExprObject = std::unique_ptr<Expr>;
+    struct Literal;
+    struct Variable;
+    struct Unary;
+    struct Binary;
+    struct Group;
 
-    class Expr {
-    private:
-    public:
-    };
+    using ExprObject = std::variant<
+            std::unique_ptr<Literal>,
+            std::unique_ptr<Variable>,
+            std::unique_ptr<Unary>,
+            std::unique_ptr<Binary>,
+            std::unique_ptr<Group>
+            >;
 
-    class Literal: public Expr{
-    private:
+    struct Literal{
         Token::Token literal;
-    public:
         explicit Literal(const Token::Token &literal);
-        [[nodiscard]] Token::Token getLiteral() const;
     };
 
-    class Variable: public Expr{
-    private:
+    struct Variable{
         Token::Token identifier;
-    public:
         explicit Variable(const Token::Token& identifier);
     };
 
-    class Unary: public Expr{
-    private:
+    struct Unary{
         Token::Token op;
         ExprObject rhs;
-    public:
         Unary(const Token::Token& op, ExprObject rhs);
-        [[nodiscard]] Token::Token getOperator() const;
     };
 
-    class Binary: public Expr{
-    private:
+    struct Binary{
         Token::Token op;
         ExprObject lhs;
         ExprObject rhs;
-    public:
         Binary(const Token::Token& op, ExprObject lhs, ExprObject rhs);
     };
 
-    class Group: public Expr{
-    private:
+    struct Group{
         ExprObject expr;
-    public:
         explicit Group(ExprObject expr);
     };
 }
 
 namespace TinyC::Stmt{
-    class Stmt;
-    using StmtObject = std::unique_ptr<Stmt>;
+    struct FuncDecl;
+    struct VarDecl;
+    struct IfStmt;
+    struct WhileStmt;
+    struct AssignStmt;
+    struct Block;
+    using StmtObject = std::variant<
+            std::unique_ptr<FuncDecl>,
+            std::unique_ptr<VarDecl>,
+            std::unique_ptr<IfStmt>,
+            std::unique_ptr<WhileStmt>,
+            std::unique_ptr<AssignStmt>,
+            std::unique_ptr<Block>
+            >;
 
-    class Stmt{
-    private:
-    public:
-    };
-
-    class VarDecl: public Stmt{
-    private:
+    struct VarDecl{
         Token::Token type;
         Token::Token variable;
         Expr::ExprObject expr;
-    public:
         VarDecl(const Token::Token &type, const Token::Token &variable, Expr::ExprObject expr);
     };
 
-    class FuncDecl: public Stmt{
-    private:
+    struct FuncDecl{
         Token::Token type;
         Token::Token function;
         std::vector<StmtObject> functionBlock;
-    public:
         FuncDecl(const Token::Token &type, const Token::Token &function, std::vector<StmtObject> functionBlock);
     };
 
-    class IfStmt: public Stmt{
-    private:
+    struct IfStmt{
         Expr::ExprObject condition;
         StmtObject thenBranch;
         StmtObject elseBranch;
-    public:
         IfStmt(Expr::ExprObject condition, StmtObject thenBranch, StmtObject elseBranch);
     };
 
-    class WhileStmt: public Stmt{
-    private:
+    struct WhileStmt{
         Expr::ExprObject condition;
         StmtObject whileBlock;
-    public:
         WhileStmt(Expr::ExprObject condition, StmtObject whileBlock);
     };
 
-    class Block: public Stmt{
-    private:
+    struct AssignStmt{
+        Token::Token identifier;
+        Expr::ExprObject expr;
+        AssignStmt(const Token::Token &identifier, Expr::ExprObject expr);
+    };
+
+    struct Block{
         std::vector<StmtObject> statements;
-    public:
         explicit Block(std::vector<StmtObject> statements);
     };
 }
@@ -141,6 +139,7 @@ namespace TinyC{
         Stmt::StmtObject Stmt();
         Stmt::StmtObject IfStmt();
         Stmt::StmtObject WhileStmt();
+        Stmt::StmtObject AssignStmt();
         std::vector<Stmt::StmtObject> Block();
     public:
         explicit Parser(const std::vector<Token::Token>& tokens);
