@@ -115,6 +115,7 @@ namespace TinyC{
         Token::Token identifier = previous();
         consume(Token::TOKEN_OPERATOR_EQUAL, "Expect '=' after variable in assignment.");
         Expr::ExprObject expr = Expression();
+        consume(Token::TOKEN_SEMICOLON, "Expect ';' after assignment.");
         return std::make_unique<Stmt::AssignStmt>(identifier, std::move(expr));
     }
 

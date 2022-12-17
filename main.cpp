@@ -18,7 +18,8 @@ int main(int argc, const char* argv[]){
     buffer << file.rdbuf();
     const std::string source(buffer.str());
     TinyC::Token::Scanner scanner{source};
-    TinyC::Parser parser{scanner.scanTokens()};
+    auto tokens = scanner.scanTokens();
+    TinyC::Parser parser{tokens};
     auto statements = parser.parse();
     auto &y = statements[0];
     TinyC::Stmt::DumpVisitor v{std::cout};
