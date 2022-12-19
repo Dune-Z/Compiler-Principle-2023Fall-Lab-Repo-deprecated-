@@ -5,10 +5,13 @@ namespace TinyC::Token{
         // TODO: Handling Error.
     }
     void DumpVisitor::operator()(int value) const {
-        out << "\033[35mIntegerLiteral\033[0m " << value;
+        out << "\033[35mNumberLiteral\033[0m " << value;
     }
-    void DumpVisitor::operator()(float value) const {
-        out << "\033[35mFloatLiteral\033[0m " << value;
+    void DumpVisitor::operator()(bool value) const {
+        out << "\033[35mNumberLiteral\033[0m " << value;
+    }
+    void DumpVisitor::operator()(double value) const {
+        out << "\033[35mNumberLiteral\033[0m " << value;
     }
     void DumpVisitor::operator()(const std::string &str) const {
         out << "\033[35mStringLiteral\033[0m " << str;
@@ -20,6 +23,7 @@ namespace TinyC::Expr{
 
     void DumpVisitor::operator()(std::unique_ptr<Literal> &literalObject) {
         auto literal = literalObject->literal;
+        auto type = literal.type;
         if(!literal.literal.has_value()) {
             // TODO: Handling Error.
             throw std::overflow_error("");
@@ -38,11 +42,10 @@ namespace TinyC::Expr{
         auto &expr = unaryObject->rhs;
         switch (op.type) {
             case Token::TOKEN_OPERATOR_BANG: out << " '!' "; break;
-            case Token::TOKEN_OPERATOR_ADD: out << " '+' "; break;
             case Token::TOKEN_OPERATOR_SUB: out << " '-' "; break;
             default:
                 // TODO: Handling Error.
-                exit(-1);
+                throw std::overflow_error("");
         }
         out << "\033[33m<line: " << op.line << ">\033[0m\n";
         std::visit(*this, expr);
@@ -66,9 +69,10 @@ namespace TinyC::Expr{
             case Token::TOKEN_OPERATOR_GREATER: out << " '>'"; break;
             case Token::TOKEN_OPERATOR_GREATER_EQUAL: out << " '>='"; break;
             case Token::TOKEN_OPERATOR_EQUAL_EQUAL: out << " '=='"; break;
+            case Token::TOKEN_OPERATOR_BANG_EQUAL: out << " '!='"; break;
             default:
                 // TODO: Handling Error.
-                exit(-1);
+                throw std::overflow_error("");
         }
         out << "\033[33m<line: " << op.line << ">\033[0m\n";
         std::visit(*this, lhs);
@@ -76,7 +80,7 @@ namespace TinyC::Expr{
     }
 
     void DumpVisitor::operator()(std::unique_ptr<Group> &groupObject) {
-        out << "\033[36mGroupExpr\033[0m '()'";
+        out << "\033[36mGroupExpr\033[0m '()'\n";
         std::visit(*this, groupObject->expr);
     }
 }
@@ -115,10 +119,18 @@ namespace TinyC::Stmt{
         std::visit(visitor, varDeclObject->expr);
     }
     void DumpVisitor::operator()(std::unique_ptr<IfStmt> &ifStmtObject) {
-        out << "If\n";
+        out << "\033[34mIfStmt\033[0m\n";
+        Expr::DumpVisitor visitor{out};
+        std::visit(visitor, ifStmtObject->condition);
+        std::visit(*this, ifStmtObject->thenBranch);
+        if(ifStmtObject->elseBranch.has_value())
+            std::visit(*this, ifStmtObject->elseBranch.value());
     }
     void DumpVisitor::operator()(std::unique_ptr<WhileStmt> &whileStmtObject) {
-        out << "While\n";
+        out << "\033[34mWhileStmt\033[0m\n";
+        Expr::DumpVisitor visitor{out};
+        std::visit(visitor, whileStmtObject->condition);
+        std::visit(*this, whileStmtObject->whileBlock);
     }
     void DumpVisitor::operator()(std::unique_ptr<AssignStmt> &assignStmtObject) {
         out << "\033[34mAssignStmt\033[0m " << assignStmtObject->identifier.lexeme;
@@ -126,9 +138,13 @@ namespace TinyC::Stmt{
         std::visit(Expr::DumpVisitor{out}, assignStmtObject->expr);
     }
     void DumpVisitor::operator()(std::unique_ptr<ReturnStmt> &returnStmtObject) {
-        out << "Return\n";
+        out << "\033[34mReturnStmt\033[0m\n";
+        Expr::DumpVisitor visitor{out};
+        std::visit(visitor, returnStmtObject->expr);
     }
     void DumpVisitor::operator()(std::unique_ptr<Block> &blockObject) {
-        out << "Block\n";
+        out << "\033[34mBlock\033[0m\n";
+        for(auto &x: blockObject->statements)
+            std::visit(*this, x);
     }
 }

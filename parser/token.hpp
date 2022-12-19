@@ -6,7 +6,7 @@
 #include <string>
 
 namespace TinyC::Token{
-    using literal_t = std::optional<std::variant<int, float, std::string>>;
+    using literal_t = std::optional<std::variant<int, bool, double, std::string>>;
     enum tokenType{
         // Literals
         TOKEN_NUMBER, TOKEN_STRING, TOKEN_IDENTIFIER,

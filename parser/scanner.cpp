@@ -50,13 +50,12 @@ namespace TinyC::Token{
     }
 
     void Scanner::number() {
-        literal_t value;
         while(isDigit(*current)) advance();
         if(*current == '.' && isDigit(*(current + 1))) {
             advance();
             while (isDigit(*current)) advance();
-            value = std::stof(std::string{start, current});
-        } else value = std::stoi(std::string{start, current});
+        }
+        literal_t value = std::stod(std::string{start, current});
         addToken(TOKEN_NUMBER, value);
         // TODO: Handling Error.
     }

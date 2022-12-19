@@ -7,7 +7,7 @@ namespace TinyC{
     private:
         std::ostream &out;
     public:
-        Interpreter(std::ostream &out);
+        explicit Interpreter(std::ostream &out);
     };
 }
 

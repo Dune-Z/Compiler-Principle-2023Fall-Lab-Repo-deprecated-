@@ -6,10 +6,11 @@
 namespace TinyC::Token{
     struct DumpVisitor{
         std::ostream &out;
-        explicit DumpVisitor(std::ostream &out);
+        DumpVisitor(std::ostream &out);
         void operator()();
+        void operator()(bool value) const;
         void operator()(int value) const;
-        void operator()(float value) const;
+        void operator()(double value) const;
         void operator()(const std::string &str) const;
     };
 }

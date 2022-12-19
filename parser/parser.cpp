@@ -18,7 +18,7 @@ namespace TinyC::Stmt{
     FuncDecl::FuncDecl(const Token::Token &type, const Token::Token &function, std::vector<StmtObject> functionBlock)
     : type{type}, function{function}, functionBlock{std::move(functionBlock)} {}
 
-    IfStmt::IfStmt(Expr::ExprObject condition, StmtObject thenBranch, StmtObject elseBranch)
+    IfStmt::IfStmt(Expr::ExprObject condition, StmtObject thenBranch, std::optional<StmtObject> elseBranch)
     : condition{std::move(condition)}, thenBranch{std::move(thenBranch)}, elseBranch{std::move(elseBranch)} {}
 
     WhileStmt::WhileStmt(Expr::ExprObject condition, StmtObject whileBlock)
@@ -99,7 +99,7 @@ namespace TinyC{
         consume(Token::TOKEN_RIGHT_PAREN, "Expect ')' after condition.");
 
         Stmt::StmtObject thenBranch = Stmt();
-        Stmt::StmtObject elseBranch;
+        std::optional<Stmt::StmtObject> elseBranch = std::nullopt;
         if(match(Token::TOKEN_ELSE)) elseBranch = Stmt();
         return std::make_unique<Stmt::IfStmt>(
                 std::move(condition),
@@ -204,7 +204,7 @@ namespace TinyC{
     }
 
     Expr::ExprObject Parser::UnaryExpr() {
-        if(match(Token::TOKEN_OPERATOR_BANG, Token::TOKEN_OPERATOR_ADD, Token::TOKEN_OPERATOR_SUB)) {
+        if(match(Token::TOKEN_OPERATOR_BANG, Token::TOKEN_OPERATOR_SUB)) {
             Token::Token op = previous();
             Expr::ExprObject expr = PrimaryExpr();
             return std::make_unique<Expr::Unary>(op, std::move(expr));

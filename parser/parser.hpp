@@ -84,8 +84,8 @@ namespace TinyC::Stmt{
     struct IfStmt{
         Expr::ExprObject condition;
         StmtObject thenBranch;
-        StmtObject elseBranch;
-        IfStmt(Expr::ExprObject condition, StmtObject thenBranch, StmtObject elseBranch);
+        std::optional<StmtObject> elseBranch;
+        IfStmt(Expr::ExprObject condition, StmtObject thenBranch, std::optional<StmtObject> elseBranch);
     };
 
     struct WhileStmt{
