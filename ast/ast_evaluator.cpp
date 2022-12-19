@@ -93,7 +93,27 @@ namespace TinyC::Stmt{
         Expr::EvaluateVisitor visitor{table};
         auto type = varDeclObject->type.type;
         auto expr = std::visit(visitor, varDeclObject->expr);
-        table.insert({varDeclObject->variable.lexeme, std::make_pair(expr, type)});
+        switch (type) {
+            case Token::TOKEN_TYPE_STRING:
+                table.insert({varDeclObject->variable.lexeme, std::make_pair(expr, type)});
+                break;
+            case Token::TOKEN_TYPE_INT:
+                table.insert({varDeclObject->variable.lexeme, std::make_pair(
+                        int(std::get<double>(expr.value())),
+                        type)});
+                break;
+            case Token::TOKEN_TYPE_BOOLEAN:
+                table.insert({varDeclObject->variable.lexeme, std::make_pair(
+                        bool(std::get<double>(expr.value())),
+                        type)});
+                break;
+            case Token::TOKEN_TYPE_FLOAT:
+                table.insert({varDeclObject->variable.lexeme, std::make_pair(expr, type)});
+                break;
+            default:
+                // TODO: Handling Error.
+                throw std::overflow_error("");
+        }
     }
 
     void EvaluateVisitor::operator()(std::unique_ptr<IfStmt> &ifStmtObject) {

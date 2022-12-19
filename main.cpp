@@ -40,7 +40,7 @@ int main(int argc, const char* argv[]){
             for(auto &x: statements) std::visit(v, x);
             auto table = v.table;
             for(auto &x: table){
-                std::cout << x.first << " " << x.second.second << " ";
+                std::cout << "Variable: " << x.first << "; Type: " << x.second.second << "; Value: ";
                 if(x.second.second == TinyC::Token::TOKEN_TYPE_STRING)
                     std::cout << std::get<std::string>(x.second.first.value());
                 if(x.second.second == TinyC::Token::TOKEN_TYPE_INT)
