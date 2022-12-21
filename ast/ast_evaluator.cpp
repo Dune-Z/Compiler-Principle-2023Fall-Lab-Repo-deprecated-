@@ -2,6 +2,204 @@
 #include "environment.hpp"
 #include <iostream>
 
+namespace TinyC::Token{
+    void PrintVisitor::operator()(int value) const {
+        std::cout << value << std::endl;
+    }
+    void PrintVisitor::operator()(double value) const {
+        std::cout << value << std::endl;
+    }
+    void PrintVisitor::operator()(const std::string &str) const {
+        std::cout << str << std::endl;
+    }
+
+    UnaryOperationVisitor::UnaryOperationVisitor(const tokenType &type): type{type} {}
+    literal_t UnaryOperationVisitor::operator()(int value) const {
+        switch (type) {
+            case TOKEN_OPERATOR_BANG: return !value;
+            case TOKEN_OPERATOR_SUB: return -value;
+            default:
+                // TODO: Handling Error.
+                throw std::overflow_error("");
+        }
+    }
+
+    literal_t UnaryOperationVisitor::operator()(double value) const {
+        switch (type) {
+            case TOKEN_OPERATOR_SUB: return -value;
+            case TOKEN_OPERATOR_BANG:
+                std::cerr << "'!' over float number is not allowed" << std::endl;
+                // TODO: Handling Error.
+            default:
+                // TODO: Handling Error.
+                throw std::overflow_error("");
+        }
+    }
+
+    literal_t UnaryOperationVisitor::operator()(const std::string &str) {
+        // TODO: Handling Error.
+        std::cerr << "'!' or '-' over float number is not allowed" << std::endl;
+        throw std::overflow_error("");
+    }
+
+    BinaryOperationVisitor::BinaryOperationVisitor(const tokenType &type): type{type} {}
+
+#define OPERATE(op) return lhs op rhs;
+    literal_t BinaryOperationVisitor::operator()(const int &lhs, const int &rhs) const {
+        switch (type) {
+            case TOKEN_OPERATOR_AND:
+                OPERATE(&&)
+            case TOKEN_OPERATOR_OR:
+                OPERATE(||)
+            case TOKEN_OPERATOR_EQUAL_EQUAL:
+                OPERATE(==)
+            case TOKEN_OPERATOR_BANG_EQUAL:
+                OPERATE(!=)
+            case TOKEN_OPERATOR_LESS:
+                OPERATE(<)
+            case TOKEN_OPERATOR_LESS_EQUAL:
+                OPERATE(<=)
+            case TOKEN_OPERATOR_GREATER:
+                OPERATE(>)
+            case TOKEN_OPERATOR_GREATER_EQUAL:
+                OPERATE(>=)
+            case TOKEN_OPERATOR_ADD:
+                OPERATE(+)
+            case TOKEN_OPERATOR_SUB:
+                OPERATE(-)
+            case TOKEN_OPERATOR_MUL:
+                OPERATE(*)
+            case TOKEN_OPERATOR_DIV:
+                OPERATE(/)
+            default:
+                // TODO: Handle Error.
+                throw std::overflow_error("");
+        }
+    }
+
+    literal_t BinaryOperationVisitor::operator()(const int &lhs, const double &rhs) const {
+        switch (type) {
+            case TOKEN_OPERATOR_EQUAL_EQUAL:
+                OPERATE(==)
+            case TOKEN_OPERATOR_BANG_EQUAL:
+                OPERATE(!=)
+            case TOKEN_OPERATOR_LESS:
+                OPERATE(<)
+            case TOKEN_OPERATOR_LESS_EQUAL:
+                OPERATE(<=)
+            case TOKEN_OPERATOR_GREATER:
+                OPERATE(>)
+            case TOKEN_OPERATOR_GREATER_EQUAL:
+                OPERATE(>=)
+            case TOKEN_OPERATOR_ADD:
+                OPERATE(+)
+            case TOKEN_OPERATOR_SUB:
+                OPERATE(-)
+            case TOKEN_OPERATOR_MUL:
+                OPERATE(*)
+            case TOKEN_OPERATOR_DIV:
+                OPERATE(/)
+            default:
+                // TODO: Handle Error.
+                throw std::overflow_error("");
+        }
+    }
+    literal_t BinaryOperationVisitor::operator()(const int &lhs, const std::string &rhs) {
+        // TODO: Handle Error.
+        throw std::overflow_error("");
+    }
+
+    literal_t BinaryOperationVisitor::operator()(const double &lhs, const int &rhs) const {
+        switch (type) {
+            case TOKEN_OPERATOR_EQUAL_EQUAL:
+                OPERATE(==)
+            case TOKEN_OPERATOR_BANG_EQUAL:
+                OPERATE(!=)
+            case TOKEN_OPERATOR_LESS:
+                OPERATE(<)
+            case TOKEN_OPERATOR_LESS_EQUAL:
+                OPERATE(<=)
+            case TOKEN_OPERATOR_GREATER:
+                OPERATE(>)
+            case TOKEN_OPERATOR_GREATER_EQUAL:
+                OPERATE(>=)
+            case TOKEN_OPERATOR_ADD:
+                OPERATE(+)
+            case TOKEN_OPERATOR_SUB:
+                OPERATE(-)
+            case TOKEN_OPERATOR_MUL:
+                OPERATE(*)
+            case TOKEN_OPERATOR_DIV:
+                OPERATE(/)
+            default:
+                // TODO: Handle Error.
+                throw std::overflow_error("");
+        }
+    }
+    literal_t BinaryOperationVisitor::operator()(const double &lhs, const double &rhs) const {
+        switch (type) {
+            case TOKEN_OPERATOR_EQUAL_EQUAL:
+                OPERATE(==)
+            case TOKEN_OPERATOR_BANG_EQUAL:
+                OPERATE(!=)
+            case TOKEN_OPERATOR_LESS:
+                OPERATE(<)
+            case TOKEN_OPERATOR_LESS_EQUAL:
+                OPERATE(<=)
+            case TOKEN_OPERATOR_GREATER:
+                OPERATE(>)
+            case TOKEN_OPERATOR_GREATER_EQUAL:
+                OPERATE(>=)
+            case TOKEN_OPERATOR_ADD:
+                OPERATE(+)
+            case TOKEN_OPERATOR_SUB:
+                OPERATE(-)
+            case TOKEN_OPERATOR_MUL:
+                OPERATE(*)
+            case TOKEN_OPERATOR_DIV:
+                OPERATE(/)
+            default:
+                // TODO: Handle Error.
+                throw std::overflow_error("");
+        }
+    }
+    literal_t BinaryOperationVisitor::operator()(const double &lhs, const std::string &rhs) {
+        // TODO: Handle Error.
+        throw std::overflow_error("");
+    }
+
+    literal_t BinaryOperationVisitor::operator()(const std::string &lhs, const int &rhs) {
+        // TODO: Handle Error.
+        throw std::overflow_error("");
+    }
+    literal_t BinaryOperationVisitor::operator()(const std::string &lhs, const double &rhs) {
+        // TODO: Handle Error.
+        throw std::overflow_error("");
+    }
+    literal_t BinaryOperationVisitor::operator()(const std::string &lhs, const std::string &rhs) const {
+        switch (type) {
+            case TOKEN_OPERATOR_EQUAL_EQUAL:
+                OPERATE(==)
+            case TOKEN_OPERATOR_BANG_EQUAL:
+                OPERATE(!=)
+            case TOKEN_OPERATOR_LESS:
+                OPERATE(<)
+            case TOKEN_OPERATOR_LESS_EQUAL:
+                OPERATE(<=)
+            case TOKEN_OPERATOR_GREATER:
+                OPERATE(>)
+            case TOKEN_OPERATOR_GREATER_EQUAL:
+                OPERATE(>=)
+            case TOKEN_OPERATOR_ADD:
+                OPERATE(+)
+            default:
+                // TODO: Handle Error.
+                throw std::overflow_error("");
+        }
+    }
+#undef OPERATE
+}
+
 namespace TinyC::Expr{
     EvaluateVisitor::EvaluateVisitor(const table_t &table): table{table} {}
 
@@ -28,49 +226,17 @@ namespace TinyC::Expr{
 
     Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Unary> &unaryObject) {
         auto rhsExpr = std::visit(*this, unaryObject->rhs);
-        switch(unaryObject->op.type) {
-            case Token::TOKEN_OPERATOR_BANG: return !std::get<bool>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_SUB: return -std::get<double>(rhsExpr.value());
-            default:
-                // TODO: Handing Error.
-                throw std::overflow_error("");
-        }
-
+        Token::UnaryOperationVisitor visitor{unaryObject->op.type};
+        return std::visit(visitor, rhsExpr.value());
     }
 
     Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Binary> &binaryObject) {
+        Token::BinaryOperationVisitor visitor{binaryObject->op.type};
         auto lhsExpr = std::visit(*this, binaryObject->lhs);
         auto rhsExpr = std::visit(*this, binaryObject->rhs);
-        switch (binaryObject->op.type) {
-            case Token::TOKEN_OPERATOR_AND:
-                return bool(std::get<double>(lhsExpr.value())) && bool(std::get<double>(rhsExpr.value()));
-            case Token::TOKEN_OPERATOR_OR:
-                return bool(std::get<double>(lhsExpr.value())) || bool(std::get<double>(rhsExpr.value()));
-            case Token::TOKEN_OPERATOR_EQUAL_EQUAL:
-                return std::get<double>(lhsExpr.value()) == std::get<double>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_BANG_EQUAL:
-                return std::get<double>(lhsExpr.value()) != std::get<double>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_LESS:
-                return std::get<double>(lhsExpr.value()) < std::get<double>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_LESS_EQUAL:
-                return std::get<double>(lhsExpr.value()) <= std::get<double>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_GREATER:
-                return std::get<double>(lhsExpr.value()) > std::get<double>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_GREATER_EQUAL:
-                return std::get<double>(lhsExpr.value()) >= std::get<double>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_ADD:
-                return std::get<double>(lhsExpr.value()) + std::get<double>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_SUB:
-                return std::get<double>(lhsExpr.value()) - std::get<double>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_MUL:
-                return std::get<double>(lhsExpr.value()) * std::get<double>(rhsExpr.value());
-            case Token::TOKEN_OPERATOR_DIV:
-                return std::get<double>(lhsExpr.value()) / std::get<double>(rhsExpr.value());
-            default:
-                // TODO: Handle Error.
-                throw std::overflow_error("");
-        }
+        return std::visit(visitor, lhsExpr.value(), rhsExpr.value());
     }
+
     Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Group> &groupObject) {
         return std::visit(*this, groupObject->expr);
     }
@@ -99,12 +265,12 @@ namespace TinyC::Stmt{
                 break;
             case Token::TOKEN_TYPE_INT:
                 table.insert({varDeclObject->variable.lexeme, std::make_pair(
-                        int(std::get<double>(expr.value())),
+                        std::get<int>(expr.value()),
                         type)});
                 break;
             case Token::TOKEN_TYPE_BOOLEAN:
                 table.insert({varDeclObject->variable.lexeme, std::make_pair(
-                        bool(std::get<double>(expr.value())),
+                        bool(std::get<int>(expr.value())),
                         type)});
                 break;
             case Token::TOKEN_TYPE_FLOAT:
@@ -123,7 +289,7 @@ namespace TinyC::Stmt{
             // TODO: Handling Error.
             throw std::overflow_error("");
         }
-        if(std::get<bool>(condition.value())) std::visit(*this, ifStmtObject->thenBranch);
+        if(std::get<int>(condition.value())) std::visit(*this, ifStmtObject->thenBranch);
         else if(ifStmtObject->elseBranch.has_value()) std::visit(*this, ifStmtObject->elseBranch.value());
         else;
     }
@@ -134,7 +300,7 @@ namespace TinyC::Stmt{
                 // TODO: Handling Error.
                 throw std::overflow_error("");
             }
-            if(!std::get<bool>(condition.value())) break;
+            if(!std::get<int>(condition.value())) break;
             else std::visit(*this, whileStmtObject->whileBlock);
         }
     }
@@ -158,5 +324,16 @@ namespace TinyC::Stmt{
     void EvaluateVisitor::operator()(std::unique_ptr<Block> &blockObject) {
         for(auto &stmt: blockObject->statements)
             std::visit(*this, stmt);
+    }
+
+    void EvaluateVisitor::operator()(std::unique_ptr<PrintStmt> &printObject) const {
+        Expr::EvaluateVisitor visitor{table};
+        auto literal = std::visit(visitor, printObject->expr);
+        if(!literal.has_value()){
+            // TODO: Handling Error.
+            throw std::overflow_error("");
+        }
+        Token::PrintVisitor printer;
+        std::visit(printer, literal.value());
     }
 }

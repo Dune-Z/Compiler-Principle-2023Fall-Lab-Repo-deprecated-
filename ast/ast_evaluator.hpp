@@ -8,6 +8,36 @@ namespace TinyC{
     using table_t = std::unordered_map<std::string, std::pair<Token::literal_t, Token::tokenType>>;
 }
 
+namespace TinyC::Token{
+    struct PrintVisitor{
+        void operator()(int value) const;
+        void operator()(double value) const;
+        void operator()(const std::string &str) const;
+    };
+
+    struct UnaryOperationVisitor{
+        tokenType type;
+        explicit UnaryOperationVisitor(const tokenType &type);
+        literal_t operator()(int value) const;
+        literal_t operator()(double value) const;
+        literal_t operator()(const std::string &str);
+    };
+
+    struct BinaryOperationVisitor{
+        tokenType type;
+        explicit BinaryOperationVisitor(const tokenType &type);
+        literal_t operator()(const int &lhs, const int &rhs) const;
+        literal_t operator()(const int &lhs, const double &rhs) const;
+        literal_t operator()(const int &lhs, const std::string &rhs);
+        literal_t operator()(const double &lhs, const int &rhs) const;
+        literal_t operator()(const double &lhs, const double &rhs) const;
+        literal_t operator()(const double &lhs, const std::string &rhs);
+        literal_t operator()(const std::string &lhs, const int &rhs);
+        literal_t operator()(const std::string &lhs, const double &rhs);
+        literal_t operator()(const std::string &lhs, const std::string &rhs) const;
+    };
+}
+
 namespace TinyC::Expr{
     struct EvaluateVisitor{
         table_t table;
@@ -30,6 +60,7 @@ namespace TinyC::Stmt{
         void operator()(std::unique_ptr<AssignStmt> &assignStmtObject);
         void operator()(std::unique_ptr<ReturnStmt> &returnStmtObject);
         void operator()(std::unique_ptr<Block> &blockObject);
+        void operator()(std::unique_ptr<PrintStmt> &printObject) const;
     };
 }
 

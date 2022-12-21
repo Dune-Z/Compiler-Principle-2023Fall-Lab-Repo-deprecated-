@@ -46,9 +46,12 @@ int main(int argc, const char* argv[]){
                 if(x.second.second == TinyC::Token::TOKEN_TYPE_INT)
                     std::cout << std::get<int>(x.second.first.value());
                 if(x.second.second == TinyC::Token::TOKEN_TYPE_BOOLEAN)
-                    std::cout << std::get<bool>(x.second.first.value());
-                if(x.second.second == TinyC::Token::TOKEN_TYPE_FLOAT)
-                    std::cout << std::get<double>(x.second.first.value());
+                    std::cout << bool(std::get<int>(x.second.first.value()));
+                if(x.second.second == TinyC::Token::TOKEN_TYPE_FLOAT){
+                    if(std::holds_alternative<int>(x.second.first.value()))
+                        std::cout << std::get<int>(x.second.first.value());
+                    else std::cout << std::get<double>(x.second.first.value());
+                }
                 std::cout << std::endl;
             }
         }

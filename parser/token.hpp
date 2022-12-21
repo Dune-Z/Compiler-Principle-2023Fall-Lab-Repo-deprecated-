@@ -6,7 +6,7 @@
 #include <string>
 
 namespace TinyC::Token{
-    using literal_t = std::optional<std::variant<int, bool, double, std::string>>;
+    using literal_t = std::optional<std::variant<int, double, std::string>>;
     enum tokenType{
         // Literals
         TOKEN_NUMBER, TOKEN_STRING, TOKEN_IDENTIFIER,
@@ -23,6 +23,7 @@ namespace TinyC::Token{
         // Others
         TOKEN_LEFT_PAREN, TOKEN_RIGHT_PAREN, TOKEN_LEFT_BRACE, TOKEN_RIGHT_BRACE,
         TOKEN_COMMA, TOKEN_SEMICOLON, TOKEN_DOT,
+        TOKEN_PRINT,
         TOKEN_EOF, TOKEN_ERROR
     };
 

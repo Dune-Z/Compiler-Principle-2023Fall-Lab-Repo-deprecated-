@@ -14,6 +14,7 @@ namespace TinyC::Token{
                 {"else", TOKEN_ELSE},
                 {"while", TOKEN_WHILE},
                 {"return", TOKEN_RETURN},
+                {"print", TOKEN_PRINT},
         };
     }
 
@@ -50,12 +51,13 @@ namespace TinyC::Token{
     }
 
     void Scanner::number() {
+        literal_t value;
         while(isDigit(*current)) advance();
         if(*current == '.' && isDigit(*(current + 1))) {
             advance();
             while (isDigit(*current)) advance();
-        }
-        literal_t value = std::stod(std::string{start, current});
+            value = std::stod(std::string{start, current});
+        } else value = std::stoi(std::string(start, current));
         addToken(TOKEN_NUMBER, value);
         // TODO: Handling Error.
     }
@@ -83,8 +85,8 @@ namespace TinyC::Token{
             case '+': addToken(TOKEN_OPERATOR_ADD); break;
             case ';': addToken(TOKEN_SEMICOLON); break;
             case '*': addToken(TOKEN_OPERATOR_MUL); break;
-            case '|': addToken(match('|') ? TOKEN_OPERATOR_OR : TOKEN_ERROR);
-            case '&': addToken(match('&') ? TOKEN_OPERATOR_AND : TOKEN_ERROR);
+            case '|': addToken(match('|') ? TOKEN_OPERATOR_OR : TOKEN_ERROR); break;
+            case '&': addToken(match('&') ? TOKEN_OPERATOR_AND : TOKEN_ERROR); break;
             case '!': addToken(match('=') ? TOKEN_OPERATOR_BANG_EQUAL : TOKEN_OPERATOR_BANG); break;
             case '=': addToken(match('=') ? TOKEN_OPERATOR_EQUAL_EQUAL : TOKEN_OPERATOR_EQUAL); break;
             case '<': addToken(match('=') ? TOKEN_OPERATOR_LESS_EQUAL : TOKEN_OPERATOR_LESS); break;

@@ -32,6 +32,9 @@ namespace TinyC::Stmt{
 
     Block::Block(std::vector<StmtObject> statements)
     : statements{std::move(statements)} {}
+
+    PrintStmt::PrintStmt(Expr::ExprObject expr)
+    : expr{std::move(expr)} {}
 }
 
 namespace TinyC{
@@ -88,6 +91,7 @@ namespace TinyC{
         if(match(Token::TOKEN_IDENTIFIER)) return AssignStmt();
         if(match(Token::TOKEN_RETURN)) return ReturnStmt();
         if(match(Token::TOKEN_LEFT_BRACE)) return std::make_unique<Stmt::Block>(std::move(Block()));
+        if(match(Token::TOKEN_PRINT)) return PrintStmt();
         // TODO: Handling Return of function.
         // TODO: Handling Error.
         throw std::overflow_error("");
@@ -136,6 +140,13 @@ namespace TinyC{
         return statements;
     }
 
+    Stmt::StmtObject Parser::PrintStmt() {
+        consume(Token::TOKEN_LEFT_PAREN, "Expect '(' after print.");
+        Expr::ExprObject expr = Expression();
+        consume(Token::TOKEN_RIGHT_PAREN, "Expect ')' after expression.");
+        consume(Token::TOKEN_SEMICOLON, "Expect ';' after print statement.");
+        return std::make_unique<Stmt::PrintStmt>(std::move(expr));
+    }
 
     Expr::ExprObject Parser::Expression() {
         if(match(Token::TOKEN_STRING))

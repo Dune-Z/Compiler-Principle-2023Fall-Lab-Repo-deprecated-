@@ -6,9 +6,7 @@
 namespace TinyC::Token{
     struct DumpVisitor{
         std::ostream &out;
-        DumpVisitor(std::ostream &out);
-        void operator()();
-        void operator()(bool value) const;
+        explicit DumpVisitor(std::ostream &out);
         void operator()(int value) const;
         void operator()(double value) const;
         void operator()(const std::string &str) const;
@@ -38,6 +36,7 @@ namespace TinyC::Stmt{
         void operator()(std::unique_ptr<AssignStmt> &assignStmtObject);
         void operator()(std::unique_ptr<ReturnStmt> &returnStmtObject);
         void operator()(std::unique_ptr<Block> &blockObject);
+        void operator()(std::unique_ptr<PrintStmt> &printObject);
     };
 }
 #endif //INTERPRETER_AST_DUMPER_HPP

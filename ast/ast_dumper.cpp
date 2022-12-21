@@ -1,13 +1,8 @@
 #include "ast_dumper.hpp"
 namespace TinyC::Token{
     DumpVisitor::DumpVisitor(std::ostream &out): out{out} {}
-    void DumpVisitor::operator()() {
-        // TODO: Handling Error.
-    }
+
     void DumpVisitor::operator()(int value) const {
-        out << "\033[35mNumberLiteral\033[0m " << value;
-    }
-    void DumpVisitor::operator()(bool value) const {
         out << "\033[35mNumberLiteral\033[0m " << value;
     }
     void DumpVisitor::operator()(double value) const {
@@ -23,7 +18,6 @@ namespace TinyC::Expr{
 
     void DumpVisitor::operator()(std::unique_ptr<Literal> &literalObject) {
         auto literal = literalObject->literal;
-        auto type = literal.type;
         if(!literal.literal.has_value()) {
             // TODO: Handling Error.
             throw std::overflow_error("");
@@ -146,5 +140,11 @@ namespace TinyC::Stmt{
         out << "\033[34mBlock\033[0m\n";
         for(auto &x: blockObject->statements)
             std::visit(*this, x);
+    }
+
+    void DumpVisitor::operator()(std::unique_ptr<PrintStmt> &printObject) {
+        out << "\033[34mPrintStmt\033[0m\n";
+        Expr::DumpVisitor visitor{out};
+        std::visit(visitor, printObject->expr);
     }
 }
