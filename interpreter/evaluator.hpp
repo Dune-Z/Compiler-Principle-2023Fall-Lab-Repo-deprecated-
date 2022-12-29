@@ -5,7 +5,7 @@
 #include <unordered_map>
 
 namespace TinyC{
-    using table_t = std::unordered_map<std::string, std::pair<Token::literal_t, Token::tokenType>>;
+    using table_t = std::unordered_map<std::string, std::pair<Token::literal_t, Token::token_t>>;
 }
 
 namespace TinyC::Token{
@@ -16,16 +16,16 @@ namespace TinyC::Token{
     };
 
     struct UnaryOperationVisitor{
-        tokenType type;
-        explicit UnaryOperationVisitor(const tokenType &type);
+        token_t type;
+        explicit UnaryOperationVisitor(const token_t &type);
         literal_t operator()(int value) const;
         literal_t operator()(double value) const;
         literal_t operator()(const std::string &str);
     };
 
     struct BinaryOperationVisitor{
-        tokenType type;
-        explicit BinaryOperationVisitor(const tokenType &type);
+        token_t type;
+        explicit BinaryOperationVisitor(const token_t &type);
         literal_t operator()(const int &lhs, const int &rhs) const;
         literal_t operator()(const int &lhs, const double &rhs) const;
         literal_t operator()(const int &lhs, const std::string &rhs);
@@ -61,6 +61,7 @@ namespace TinyC::Stmt{
         void operator()(std::unique_ptr<ReturnStmt> &returnStmtObject);
         void operator()(std::unique_ptr<Block> &blockObject);
         void operator()(std::unique_ptr<PrintStmt> &printObject) const;
+        void dump_table();
     };
 }
 

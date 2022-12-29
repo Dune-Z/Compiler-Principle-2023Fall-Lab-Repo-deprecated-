@@ -7,7 +7,7 @@
 
 namespace TinyC::Token{
     using literal_t = std::optional<std::variant<int, double, std::string>>;
-    enum tokenType{
+    enum token_t{
         // Literals
         TOKEN_NUMBER, TOKEN_STRING, TOKEN_IDENTIFIER,
         // Type keywords
@@ -29,10 +29,10 @@ namespace TinyC::Token{
 
     struct Token{
         int line = 0;
-        tokenType type;
+        token_t type;
         std::string lexeme;
         literal_t literal;
-        explicit Token(int line, tokenType type, std::string lexeme, literal_t literal);
+        explicit Token(int line, token_t type, std::string lexeme, literal_t literal);
         Token& operator=(const Token& rhs) = default;
     };
 }

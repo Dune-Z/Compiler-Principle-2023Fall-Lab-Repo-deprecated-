@@ -13,7 +13,7 @@ namespace TinyC::Token{
         std::cout << str << std::endl;
     }
 
-    UnaryOperationVisitor::UnaryOperationVisitor(const tokenType &type): type{type} {}
+    UnaryOperationVisitor::UnaryOperationVisitor(const token_t &type): type{type} {}
     literal_t UnaryOperationVisitor::operator()(int value) const {
         switch (type) {
             case TOKEN_OPERATOR_BANG: return !value;
@@ -42,7 +42,7 @@ namespace TinyC::Token{
         throw std::overflow_error("");
     }
 
-    BinaryOperationVisitor::BinaryOperationVisitor(const tokenType &type): type{type} {}
+    BinaryOperationVisitor::BinaryOperationVisitor(const token_t &type): type{type} {}
 
 #define OPERATE(op) return lhs op rhs;
     literal_t BinaryOperationVisitor::operator()(const int &lhs, const int &rhs) const {
@@ -335,5 +335,23 @@ namespace TinyC::Stmt{
         }
         Token::PrintVisitor printer;
         std::visit(printer, literal.value());
+    }
+
+    void EvaluateVisitor::dump_table() {
+        for(auto &x: table){
+            std::cout << "Variable: " << x.first << "; Type: " << x.second.second << "; Value: ";
+            if(x.second.second == TinyC::Token::TOKEN_TYPE_STRING)
+                std::cout << std::get<std::string>(x.second.first.value());
+            if(x.second.second == TinyC::Token::TOKEN_TYPE_INT)
+                std::cout << std::get<int>(x.second.first.value());
+            if(x.second.second == TinyC::Token::TOKEN_TYPE_BOOLEAN)
+                std::cout << bool(std::get<int>(x.second.first.value()));
+            if(x.second.second == TinyC::Token::TOKEN_TYPE_FLOAT){
+                if(std::holds_alternative<int>(x.second.first.value()))
+                    std::cout << std::get<int>(x.second.first.value());
+                else std::cout << std::get<double>(x.second.first.value());
+            }
+            std::cout << std::endl;
+        }
     }
 }

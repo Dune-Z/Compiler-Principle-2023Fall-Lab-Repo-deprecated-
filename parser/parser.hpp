@@ -125,8 +125,8 @@ namespace TinyC{
         std::vector<Token::Token>::const_iterator current;
 
         bool isAtEnd();
-        bool check(Token::tokenType type);
-        Token::Token consume(Token::tokenType type, std::string&& message);
+        bool check(Token::token_t type);
+        Token::Token consume(Token::token_t type, std::string&& message);
 
         Token::Token advance();
         Token::Token previous();
@@ -158,7 +158,7 @@ namespace TinyC{
         Stmt::StmtObject PrintStmt();
         std::vector<Stmt::StmtObject> Block();
     public:
-        explicit Parser(const std::vector<Token::Token>& tokens);
+        explicit Parser(const std::string& source);
         std::vector<Stmt::StmtObject> parse();
     };
 

@@ -129,53 +129,53 @@ Interpreter/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/build
 .PHONY : Interpreter/fast
 
-ast/ast_dumper.o: ast/ast_dumper.cpp.o
-.PHONY : ast/ast_dumper.o
+interpreter/environment.o: interpreter/environment.cpp.o
+.PHONY : interpreter/environment.o
 
 # target to build an object file
-ast/ast_dumper.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o
-.PHONY : ast/ast_dumper.cpp.o
+interpreter/environment.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o
+.PHONY : interpreter/environment.cpp.o
 
-ast/ast_dumper.i: ast/ast_dumper.cpp.i
-.PHONY : ast/ast_dumper.i
+interpreter/environment.i: interpreter/environment.cpp.i
+.PHONY : interpreter/environment.i
 
 # target to preprocess a source file
-ast/ast_dumper.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.i
-.PHONY : ast/ast_dumper.cpp.i
+interpreter/environment.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/interpreter/environment.cpp.i
+.PHONY : interpreter/environment.cpp.i
 
-ast/ast_dumper.s: ast/ast_dumper.cpp.s
-.PHONY : ast/ast_dumper.s
+interpreter/environment.s: interpreter/environment.cpp.s
+.PHONY : interpreter/environment.s
 
 # target to generate assembly for a file
-ast/ast_dumper.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.s
-.PHONY : ast/ast_dumper.cpp.s
+interpreter/environment.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/interpreter/environment.cpp.s
+.PHONY : interpreter/environment.cpp.s
 
-ast/ast_evaluator.o: ast/ast_evaluator.cpp.o
-.PHONY : ast/ast_evaluator.o
+interpreter/evaluator.o: interpreter/evaluator.cpp.o
+.PHONY : interpreter/evaluator.o
 
 # target to build an object file
-ast/ast_evaluator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o
-.PHONY : ast/ast_evaluator.cpp.o
+interpreter/evaluator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o
+.PHONY : interpreter/evaluator.cpp.o
 
-ast/ast_evaluator.i: ast/ast_evaluator.cpp.i
-.PHONY : ast/ast_evaluator.i
+interpreter/evaluator.i: interpreter/evaluator.cpp.i
+.PHONY : interpreter/evaluator.i
 
 # target to preprocess a source file
-ast/ast_evaluator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.i
-.PHONY : ast/ast_evaluator.cpp.i
+interpreter/evaluator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.i
+.PHONY : interpreter/evaluator.cpp.i
 
-ast/ast_evaluator.s: ast/ast_evaluator.cpp.s
-.PHONY : ast/ast_evaluator.s
+interpreter/evaluator.s: interpreter/evaluator.cpp.s
+.PHONY : interpreter/evaluator.s
 
 # target to generate assembly for a file
-ast/ast_evaluator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.s
-.PHONY : ast/ast_evaluator.cpp.s
+interpreter/evaluator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.s
+.PHONY : interpreter/evaluator.cpp.s
 
 interpreter/interpreter.o: interpreter/interpreter.cpp.o
 .PHONY : interpreter/interpreter.o
@@ -224,6 +224,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+parser/dumper.o: parser/dumper.cpp.o
+.PHONY : parser/dumper.o
+
+# target to build an object file
+parser/dumper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/parser/dumper.cpp.o
+.PHONY : parser/dumper.cpp.o
+
+parser/dumper.i: parser/dumper.cpp.i
+.PHONY : parser/dumper.i
+
+# target to preprocess a source file
+parser/dumper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/parser/dumper.cpp.i
+.PHONY : parser/dumper.cpp.i
+
+parser/dumper.s: parser/dumper.cpp.s
+.PHONY : parser/dumper.s
+
+# target to generate assembly for a file
+parser/dumper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/parser/dumper.cpp.s
+.PHONY : parser/dumper.cpp.s
 
 parser/parser.o: parser/parser.cpp.o
 .PHONY : parser/parser.o
@@ -297,30 +321,6 @@ parser/token.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/parser/token.cpp.s
 .PHONY : parser/token.cpp.s
 
-runtime/environment.o: runtime/environment.cpp.o
-.PHONY : runtime/environment.o
-
-# target to build an object file
-runtime/environment.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/runtime/environment.cpp.o
-.PHONY : runtime/environment.cpp.o
-
-runtime/environment.i: runtime/environment.cpp.i
-.PHONY : runtime/environment.i
-
-# target to preprocess a source file
-runtime/environment.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/runtime/environment.cpp.i
-.PHONY : runtime/environment.cpp.i
-
-runtime/environment.s: runtime/environment.cpp.s
-.PHONY : runtime/environment.s
-
-# target to generate assembly for a file
-runtime/environment.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Interpreter.dir/build.make CMakeFiles/Interpreter.dir/runtime/environment.cpp.s
-.PHONY : runtime/environment.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -330,18 +330,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Interpreter"
-	@echo "... ast/ast_dumper.o"
-	@echo "... ast/ast_dumper.i"
-	@echo "... ast/ast_dumper.s"
-	@echo "... ast/ast_evaluator.o"
-	@echo "... ast/ast_evaluator.i"
-	@echo "... ast/ast_evaluator.s"
+	@echo "... interpreter/environment.o"
+	@echo "... interpreter/environment.i"
+	@echo "... interpreter/environment.s"
+	@echo "... interpreter/evaluator.o"
+	@echo "... interpreter/evaluator.i"
+	@echo "... interpreter/evaluator.s"
 	@echo "... interpreter/interpreter.o"
 	@echo "... interpreter/interpreter.i"
 	@echo "... interpreter/interpreter.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... parser/dumper.o"
+	@echo "... parser/dumper.i"
+	@echo "... parser/dumper.s"
 	@echo "... parser/parser.o"
 	@echo "... parser/parser.i"
 	@echo "... parser/parser.s"
@@ -351,9 +354,6 @@ help:
 	@echo "... parser/token.o"
 	@echo "... parser/token.i"
 	@echo "... parser/token.s"
-	@echo "... runtime/environment.o"
-	@echo "... runtime/environment.i"
-	@echo "... runtime/environment.s"
 .PHONY : help
 
 

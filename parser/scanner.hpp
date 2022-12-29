@@ -16,7 +16,7 @@ namespace TinyC::Token{
         int line = 1;
         std::string::const_iterator start;
         std::string::const_iterator current;
-        std::unordered_map<std::string, tokenType> keywords;
+        std::unordered_map<std::string, token_t> keywords;
 
         char advance();
         bool isAtEnd();
@@ -25,8 +25,8 @@ namespace TinyC::Token{
         static bool isAlphabet(char c);
         static bool isAlphabetNumeric(char c);
 
-        void addToken(tokenType type);
-        void addToken(tokenType type, const literal_t& literal);
+        void addToken(token_t type);
+        void addToken(token_t type, const literal_t& literal);
         void string();
         void number();
         void identifier();

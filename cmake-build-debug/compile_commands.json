@@ -21,13 +21,13 @@
 },
 {
   "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
-  "command": "clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_dumper.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_dumper.cpp"
+  "command": "clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/parser/dumper.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/parser/dumper.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/parser/dumper.cpp"
 },
 {
   "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
-  "command": "clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_evaluator.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_evaluator.cpp"
+  "command": "clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/evaluator.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/evaluator.cpp"
 },
 {
   "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
@@ -36,7 +36,7 @@
 },
 {
   "directory": "/Users/zuoyifei/Documents/Dev/CMinus/source/cmake-build-debug",
-  "command": "clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/runtime/environment.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/runtime/environment.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/runtime/environment.cpp"
+  "command": "clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/environment.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/environment.cpp"
 }
 ]

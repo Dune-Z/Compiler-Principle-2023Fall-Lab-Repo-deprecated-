@@ -2,9 +2,7 @@
 #include <fstream>
 #include "boost/program_options.hpp"
 #include "parser/scanner.hpp"
-#include "parser/parser.hpp"
-#include "parser/dumper.hpp"
-#include "interpreter/evaluator.hpp"
+#include "interpreter/interpreter.hpp"
 namespace bpo = boost::program_options;
 
 void parseCommandLineOption(const bpo::variables_map &vm, const bpo::options_description &description) {
@@ -21,34 +19,12 @@ void parseCommandLineOption(const bpo::variables_map &vm, const bpo::options_des
         std::stringstream buffer;
         buffer << file.rdbuf();
         const std::string source(buffer.str());
-        TinyC::Token::Scanner scanner{source};
-        auto tokens = scanner.scanTokens();
-        TinyC::Parser parser{tokens};
-        auto statements = parser.parse();
+        TinyC::Interpreter interpreter{std::cout, source};
 
-        if(vm.count("ast-dump")) {
-            TinyC::Stmt::DumpVisitor v{std::cout};
-            for(auto &x: statements) std::visit(v, x);
-        }
-        if(vm.count("interpret")) {
-            TinyC::Stmt::EvaluateVisitor v;
-            for(auto &x: statements) std::visit(v, x);
-            for(auto &x: v.table){
-                std::cout << "Variable: " << x.first << "; Type: " << x.second.second << "; Value: ";
-                if(x.second.second == TinyC::Token::TOKEN_TYPE_STRING)
-                    std::cout << std::get<std::string>(x.second.first.value());
-                if(x.second.second == TinyC::Token::TOKEN_TYPE_INT)
-                    std::cout << std::get<int>(x.second.first.value());
-                if(x.second.second == TinyC::Token::TOKEN_TYPE_BOOLEAN)
-                    std::cout << bool(std::get<int>(x.second.first.value()));
-                if(x.second.second == TinyC::Token::TOKEN_TYPE_FLOAT){
-                    if(std::holds_alternative<int>(x.second.first.value()))
-                        std::cout << std::get<int>(x.second.first.value());
-                    else std::cout << std::get<double>(x.second.first.value());
-                }
-                std::cout << std::endl;
-            }
-        }
+        if(vm.count("ast-dump")) 
+            interpreter.ast_dump();
+        if(vm.count("interpret")) 
+            interpreter.interpret();
 
     } else {
         std::cerr << "Expected filename. Usage: --file <filename>" <<  std::endl;

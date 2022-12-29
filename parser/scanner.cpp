@@ -29,8 +29,8 @@ namespace TinyC::Token{
     bool Scanner::isAlphabet(char c) {return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_';}
     bool Scanner::isAlphabetNumeric(char c) {return isDigit(c) || isAlphabet(c);}
 
-    void Scanner::addToken(tokenType type) { addToken(type, std::nullopt);}
-    void Scanner::addToken(tokenType type, const literal_t &literal) {
+    void Scanner::addToken(token_t type) { addToken(type, std::nullopt);}
+    void Scanner::addToken(token_t type, const literal_t &literal) {
         std::string lexeme = std::string{start, current};
         Token token{line, type, lexeme, literal};
         tokens.push_back(token);
@@ -63,7 +63,7 @@ namespace TinyC::Token{
     }
 
     void Scanner::identifier() {
-        tokenType type;
+        token_t type;
         while(isAlphabetNumeric(*current)) advance();
         std::string text = std::string{start, current};
         auto found = keywords.find(text);

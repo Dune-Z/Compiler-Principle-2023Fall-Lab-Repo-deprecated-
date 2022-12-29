@@ -1,4 +1,5 @@
 #include "parser.hpp"
+#include "scanner.hpp"
 #include "token.hpp"
 #include <utility>
 #include <memory>
@@ -38,10 +39,15 @@ namespace TinyC::Stmt{
 }
 
 namespace TinyC{
-    Parser::Parser(const std::vector<Token::Token> &tokens): tokens{tokens} {current = tokens.begin();}
+    Parser::Parser(const std::string &source) {
+        Token::Scanner scanner{source};
+        tokens = scanner.scanTokens();
+        current = tokens.begin();
+    }
+
     bool Parser::isAtEnd() {return current->type == Token::TOKEN_EOF;}
-    bool Parser::check(Token::tokenType type) {return type == lookahead().type;}
-    Token::Token Parser::consume(Token::tokenType type, std::string &&message) {
+    bool Parser::check(Token::token_t type) {return type == lookahead().type;}
+    Token::Token Parser::consume(Token::token_t type, std::string &&message) {
         if(check(type)) return advance();
         // TODO: Handling Error and Show Message.
         throw std::overflow_error("");

@@ -125,33 +125,33 @@ CMakeFiles/Interpreter.dir/parser/parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Interpreter.dir/parser/parser.cpp.s"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zuoyifei/Documents/Dev/CMinus/source/parser/parser.cpp -o CMakeFiles/Interpreter.dir/parser/parser.cpp.s
 
-CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o: CMakeFiles/Interpreter.dir/flags.make
-CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o: /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_dumper.cpp
-CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o: CMakeFiles/Interpreter.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zuoyifei/Documents/Dev/CMinus/source/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o -MF CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o.d -o CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_dumper.cpp
+CMakeFiles/Interpreter.dir/parser/dumper.cpp.o: CMakeFiles/Interpreter.dir/flags.make
+CMakeFiles/Interpreter.dir/parser/dumper.cpp.o: /Users/zuoyifei/Documents/Dev/CMinus/source/parser/dumper.cpp
+CMakeFiles/Interpreter.dir/parser/dumper.cpp.o: CMakeFiles/Interpreter.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zuoyifei/Documents/Dev/CMinus/source/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Interpreter.dir/parser/dumper.cpp.o"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Interpreter.dir/parser/dumper.cpp.o -MF CMakeFiles/Interpreter.dir/parser/dumper.cpp.o.d -o CMakeFiles/Interpreter.dir/parser/dumper.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/parser/dumper.cpp
 
-CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.i"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_dumper.cpp > CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.i
+CMakeFiles/Interpreter.dir/parser/dumper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Interpreter.dir/parser/dumper.cpp.i"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zuoyifei/Documents/Dev/CMinus/source/parser/dumper.cpp > CMakeFiles/Interpreter.dir/parser/dumper.cpp.i
 
-CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.s"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_dumper.cpp -o CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.s
+CMakeFiles/Interpreter.dir/parser/dumper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Interpreter.dir/parser/dumper.cpp.s"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zuoyifei/Documents/Dev/CMinus/source/parser/dumper.cpp -o CMakeFiles/Interpreter.dir/parser/dumper.cpp.s
 
-CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o: CMakeFiles/Interpreter.dir/flags.make
-CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o: /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_evaluator.cpp
-CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o: CMakeFiles/Interpreter.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zuoyifei/Documents/Dev/CMinus/source/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o -MF CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o.d -o CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_evaluator.cpp
+CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o: CMakeFiles/Interpreter.dir/flags.make
+CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o: /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/evaluator.cpp
+CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o: CMakeFiles/Interpreter.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zuoyifei/Documents/Dev/CMinus/source/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o -MF CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o.d -o CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/evaluator.cpp
 
-CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.i"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_evaluator.cpp > CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.i
+CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.i"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/evaluator.cpp > CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.i
 
-CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.s"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_evaluator.cpp -o CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.s
+CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.s"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/evaluator.cpp -o CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.s
 
 CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o: CMakeFiles/Interpreter.dir/flags.make
 CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o: /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/interpreter.cpp
@@ -167,19 +167,19 @@ CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.s"
 	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/interpreter.cpp -o CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.s
 
-CMakeFiles/Interpreter.dir/runtime/environment.cpp.o: CMakeFiles/Interpreter.dir/flags.make
-CMakeFiles/Interpreter.dir/runtime/environment.cpp.o: /Users/zuoyifei/Documents/Dev/CMinus/source/runtime/environment.cpp
-CMakeFiles/Interpreter.dir/runtime/environment.cpp.o: CMakeFiles/Interpreter.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zuoyifei/Documents/Dev/CMinus/source/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Interpreter.dir/runtime/environment.cpp.o"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Interpreter.dir/runtime/environment.cpp.o -MF CMakeFiles/Interpreter.dir/runtime/environment.cpp.o.d -o CMakeFiles/Interpreter.dir/runtime/environment.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/runtime/environment.cpp
+CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o: CMakeFiles/Interpreter.dir/flags.make
+CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o: /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/environment.cpp
+CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o: CMakeFiles/Interpreter.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zuoyifei/Documents/Dev/CMinus/source/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o -MF CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o.d -o CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/environment.cpp
 
-CMakeFiles/Interpreter.dir/runtime/environment.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Interpreter.dir/runtime/environment.cpp.i"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zuoyifei/Documents/Dev/CMinus/source/runtime/environment.cpp > CMakeFiles/Interpreter.dir/runtime/environment.cpp.i
+CMakeFiles/Interpreter.dir/interpreter/environment.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Interpreter.dir/interpreter/environment.cpp.i"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/environment.cpp > CMakeFiles/Interpreter.dir/interpreter/environment.cpp.i
 
-CMakeFiles/Interpreter.dir/runtime/environment.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Interpreter.dir/runtime/environment.cpp.s"
-	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zuoyifei/Documents/Dev/CMinus/source/runtime/environment.cpp -o CMakeFiles/Interpreter.dir/runtime/environment.cpp.s
+CMakeFiles/Interpreter.dir/interpreter/environment.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Interpreter.dir/interpreter/environment.cpp.s"
+	clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/environment.cpp -o CMakeFiles/Interpreter.dir/interpreter/environment.cpp.s
 
 # Object files for target Interpreter
 Interpreter_OBJECTS = \
@@ -187,10 +187,10 @@ Interpreter_OBJECTS = \
 "CMakeFiles/Interpreter.dir/parser/token.cpp.o" \
 "CMakeFiles/Interpreter.dir/parser/scanner.cpp.o" \
 "CMakeFiles/Interpreter.dir/parser/parser.cpp.o" \
-"CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o" \
-"CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o" \
+"CMakeFiles/Interpreter.dir/parser/dumper.cpp.o" \
+"CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o" \
 "CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o" \
-"CMakeFiles/Interpreter.dir/runtime/environment.cpp.o"
+"CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o"
 
 # External object files for target Interpreter
 Interpreter_EXTERNAL_OBJECTS =
@@ -199,10 +199,10 @@ Interpreter: CMakeFiles/Interpreter.dir/main.cpp.o
 Interpreter: CMakeFiles/Interpreter.dir/parser/token.cpp.o
 Interpreter: CMakeFiles/Interpreter.dir/parser/scanner.cpp.o
 Interpreter: CMakeFiles/Interpreter.dir/parser/parser.cpp.o
-Interpreter: CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o
-Interpreter: CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o
+Interpreter: CMakeFiles/Interpreter.dir/parser/dumper.cpp.o
+Interpreter: CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o
 Interpreter: CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o
-Interpreter: CMakeFiles/Interpreter.dir/runtime/environment.cpp.o
+Interpreter: CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o
 Interpreter: CMakeFiles/Interpreter.dir/build.make
 Interpreter: /opt/homebrew/lib/libboost_program_options-mt.dylib
 Interpreter: CMakeFiles/Interpreter.dir/link.txt

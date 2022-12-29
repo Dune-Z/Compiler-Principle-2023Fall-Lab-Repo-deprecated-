@@ -8,14 +8,14 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_dumper.cpp" "CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o.d"
-  "/Users/zuoyifei/Documents/Dev/CMinus/source/ast/ast_evaluator.cpp" "CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o.d"
+  "/Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/environment.cpp" "CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/interpreter/environment.cpp.o.d"
+  "/Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/evaluator.cpp" "CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/interpreter/evaluator.cpp.o.d"
   "/Users/zuoyifei/Documents/Dev/CMinus/source/interpreter/interpreter.cpp" "CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o.d"
   "/Users/zuoyifei/Documents/Dev/CMinus/source/main.cpp" "CMakeFiles/Interpreter.dir/main.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/main.cpp.o.d"
+  "/Users/zuoyifei/Documents/Dev/CMinus/source/parser/dumper.cpp" "CMakeFiles/Interpreter.dir/parser/dumper.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/parser/dumper.cpp.o.d"
   "/Users/zuoyifei/Documents/Dev/CMinus/source/parser/parser.cpp" "CMakeFiles/Interpreter.dir/parser/parser.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/parser/parser.cpp.o.d"
   "/Users/zuoyifei/Documents/Dev/CMinus/source/parser/scanner.cpp" "CMakeFiles/Interpreter.dir/parser/scanner.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/parser/scanner.cpp.o.d"
   "/Users/zuoyifei/Documents/Dev/CMinus/source/parser/token.cpp" "CMakeFiles/Interpreter.dir/parser/token.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/parser/token.cpp.o.d"
-  "/Users/zuoyifei/Documents/Dev/CMinus/source/runtime/environment.cpp" "CMakeFiles/Interpreter.dir/runtime/environment.cpp.o" "gcc" "CMakeFiles/Interpreter.dir/runtime/environment.cpp.o.d"
   )
 
 # Targets to which this target links.
