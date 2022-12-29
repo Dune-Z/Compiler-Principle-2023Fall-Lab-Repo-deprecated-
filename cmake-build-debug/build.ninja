@@ -102,13 +102,13 @@ build CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o: CXX_COMPILER__In
   OBJECT_DIR = CMakeFiles/Interpreter.dir
   OBJECT_FILE_DIR = CMakeFiles/Interpreter.dir/interpreter
 
-build CMakeFiles/Interpreter.dir/environment.cpp.o: CXX_COMPILER__Interpreter_Debug /Users/zuoyifei/Documents/Dev/CMinus/source/environment.cpp || cmake_object_order_depends_target_Interpreter
+build CMakeFiles/Interpreter.dir/runtime/environment.cpp.o: CXX_COMPILER__Interpreter_Debug /Users/zuoyifei/Documents/Dev/CMinus/source/runtime/environment.cpp || cmake_object_order_depends_target_Interpreter
   DEFINES = -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB
-  DEP_FILE = CMakeFiles/Interpreter.dir/environment.cpp.o.d
+  DEP_FILE = CMakeFiles/Interpreter.dir/runtime/environment.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17
   INCLUDES = -I/Users/zuoyifei/Documents/Dev/CMinus/source/. -isystem /opt/homebrew/include
   OBJECT_DIR = CMakeFiles/Interpreter.dir
-  OBJECT_FILE_DIR = CMakeFiles/Interpreter.dir
+  OBJECT_FILE_DIR = CMakeFiles/Interpreter.dir/runtime
 
 
 # =============================================================================
@@ -118,7 +118,7 @@ build CMakeFiles/Interpreter.dir/environment.cpp.o: CXX_COMPILER__Interpreter_De
 #############################################
 # Link the executable Interpreter
 
-build Interpreter: CXX_EXECUTABLE_LINKER__Interpreter_Debug CMakeFiles/Interpreter.dir/main.cpp.o CMakeFiles/Interpreter.dir/parser/token.cpp.o CMakeFiles/Interpreter.dir/parser/scanner.cpp.o CMakeFiles/Interpreter.dir/parser/parser.cpp.o CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o CMakeFiles/Interpreter.dir/environment.cpp.o | /opt/homebrew/lib/libboost_program_options-mt.dylib
+build Interpreter: CXX_EXECUTABLE_LINKER__Interpreter_Debug CMakeFiles/Interpreter.dir/main.cpp.o CMakeFiles/Interpreter.dir/parser/token.cpp.o CMakeFiles/Interpreter.dir/parser/scanner.cpp.o CMakeFiles/Interpreter.dir/parser/parser.cpp.o CMakeFiles/Interpreter.dir/ast/ast_dumper.cpp.o CMakeFiles/Interpreter.dir/ast/ast_evaluator.cpp.o CMakeFiles/Interpreter.dir/interpreter/interpreter.cpp.o CMakeFiles/Interpreter.dir/runtime/environment.cpp.o | /opt/homebrew/lib/libboost_program_options-mt.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk
   LINK_LIBRARIES = /opt/homebrew/lib/libboost_program_options-mt.dylib
   OBJECT_DIR = CMakeFiles/Interpreter.dir

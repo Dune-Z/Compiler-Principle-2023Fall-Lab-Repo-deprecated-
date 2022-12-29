@@ -1,5 +1,5 @@
-#ifndef INTERPRETER_AST_DUMPER_HPP
-#define INTERPRETER_AST_DUMPER_HPP
+#ifndef INTERPRETER_DUMPER_HPP
+#define INTERPRETER_DUMPER_HPP
 #include "parser/parser.hpp"
 #include <ostream>
 
@@ -39,4 +39,4 @@ namespace TinyC::Stmt{
         void operator()(std::unique_ptr<PrintStmt> &printObject);
     };
 }
-#endif //INTERPRETER_AST_DUMPER_HPP
+#endif //INTERPRETER_DUMPER_HPP

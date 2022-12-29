@@ -1,6 +1,6 @@
 #ifndef INTERPRETER_INTERPRETER_HPP
 #define INTERPRETER_INTERPRETER_HPP
-#include "ast/ast_evaluator.hpp"
+#include "evaluator.hpp"
 #include <ostream>
 #include <vector>
 #include <unordered_map>

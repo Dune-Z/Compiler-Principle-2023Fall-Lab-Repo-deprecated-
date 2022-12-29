@@ -1,4 +1,4 @@
-#include "ast_dumper.hpp"
+#include "dumper.hpp"
 namespace TinyC::Token{
     DumpVisitor::DumpVisitor(std::ostream &out): out{out} {}
 

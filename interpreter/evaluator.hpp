@@ -1,5 +1,5 @@
-#ifndef INTERPRETER_AST_EVALUATOR_HPP
-#define INTERPRETER_AST_EVALUATOR_HPP
+#ifndef INTERPRETER_EVALUATOR_HPP
+#define INTERPRETER_EVALUATOR_HPP
 #include "parser/parser.hpp"
 #include <ostream>
 #include <unordered_map>
@@ -65,4 +65,4 @@ namespace TinyC::Stmt{
 }
 
 
-#endif //INTERPRETER_AST_EVALUATOR_HPP
+#endif //INTERPRETER_EVALUATOR_HPP

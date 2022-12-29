@@ -17,13 +17,13 @@ add_executable(Interpreter
     common.hpp
     parser/parser.cpp
     parser/parser.hpp
-    ast/ast_dumper.cpp
-    ast/ast_dumper.hpp
-    ast/ast_evaluator.cpp
-    ast/ast_evaluator.hpp
+        parser/dumper.cpp
+        parser/dumper.hpp
+        interpreter/evaluator.cpp
+        interpreter/evaluator.hpp
     interpreter/interpreter.cpp
     interpreter/interpreter.hpp
-        environment.cpp environment.hpp)
+        interpreter/environment.cpp interpreter/environment.hpp)
 
 
 if(Boost_FOUND)
