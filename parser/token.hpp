@@ -34,6 +34,7 @@ namespace TinyC::Token{
         literal_t literal;
         explicit Token(int line, token_t type, std::string lexeme, literal_t literal);
         Token& operator=(const Token& rhs) = default;
+        bool operator==(const Token &rhs) const;
     };
 }
 

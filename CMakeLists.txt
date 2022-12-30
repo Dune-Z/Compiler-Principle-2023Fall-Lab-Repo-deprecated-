@@ -9,21 +9,22 @@ find_package(Boost 1.80.0 COMPONENTS program_options)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include_directories(./)
 add_executable(Interpreter
-    main.cpp
-    parser/token.cpp
-    parser/token.hpp
-    parser/scanner.cpp
-    parser/scanner.hpp
-    common.hpp
-    parser/parser.cpp
-    parser/parser.hpp
+        main.cpp
+        parser/token.cpp
+        parser/token.hpp
+        parser/scanner.cpp
+        parser/scanner.hpp
+        parser/parser.cpp
+        parser/parser.hpp
         parser/dumper.cpp
         parser/dumper.hpp
+        interpreter/interpreter.cpp
+        interpreter/interpreter.hpp
+        interpreter/environment.cpp
+        interpreter/environment.hpp
         interpreter/evaluator.cpp
         interpreter/evaluator.hpp
-    interpreter/interpreter.cpp
-    interpreter/interpreter.hpp
-        interpreter/environment.cpp interpreter/environment.hpp)
+        )
 
 
 if(Boost_FOUND)

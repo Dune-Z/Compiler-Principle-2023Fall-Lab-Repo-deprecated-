@@ -19,6 +19,10 @@ void parseCommandLineOption(const bpo::variables_map &vm, const bpo::options_des
         std::stringstream buffer;
         buffer << file.rdbuf();
         const std::string source(buffer.str());
+        if(source.empty()) {
+            std::cerr << "No such file or empty file: " << filename << std::endl;
+            exit(42);
+        }
         TinyC::Interpreter interpreter{std::cout, source};
 
         if(vm.count("ast-dump")) 

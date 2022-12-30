@@ -1,5 +1,4 @@
 #include "interpreter.hpp"
-#include "parser/parser.hpp"
 
 namespace TinyC{
     Interpreter::Interpreter(std::ostream &out, const std::string &source)
@@ -9,8 +8,9 @@ namespace TinyC{
     }
 
     void Interpreter::interpret() {
-        for(auto &statement: statements)
+        for(auto &statement: statements){
             std::visit(evaluator, statement);
+        }
         evaluator.dump_table();
     }
 

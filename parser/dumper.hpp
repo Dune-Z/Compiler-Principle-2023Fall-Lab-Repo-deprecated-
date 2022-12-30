@@ -19,6 +19,7 @@ namespace TinyC::Expr{
         explicit DumpVisitor(std::ostream &out);
         void operator()(std::unique_ptr<Literal> &literalObject);
         void operator()(std::unique_ptr<Variable> &varObject);
+        void operator()(std::unique_ptr<Call> &callObject);
         void operator()(std::unique_ptr<Unary> &unaryObject);
         void operator()(std::unique_ptr<Binary> &binaryObject);
         void operator()(std::unique_ptr<Group> &groupObject);

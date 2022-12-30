@@ -1,12 +1,9 @@
 #ifndef INTERPRETER_EVALUATOR_HPP
 #define INTERPRETER_EVALUATOR_HPP
 #include "parser/parser.hpp"
+#include "environment.hpp"
 #include <ostream>
 #include <unordered_map>
-
-namespace TinyC{
-    using table_t = std::unordered_map<std::string, std::pair<Token::literal_t, Token::token_t>>;
-}
 
 namespace TinyC::Token{
     struct PrintVisitor{
@@ -40,10 +37,11 @@ namespace TinyC::Token{
 
 namespace TinyC::Expr{
     struct EvaluateVisitor{
-        table_t table;
-        explicit EvaluateVisitor(const table_t &table);
+        EnvObject environment;
+        explicit EvaluateVisitor(EnvObject environment);
         Token::literal_t operator()(std::unique_ptr<Literal> &literalObject);
-        Token::literal_t operator()(std::unique_ptr<Variable> &varObject);
+        Token::literal_t operator()(std::unique_ptr<Variable> &varObject) const;
+        Token::literal_t operator()(std::unique_ptr<Call> &callObject);
         Token::literal_t operator()(std::unique_ptr<Unary> &unaryObject);
         Token::literal_t operator()(std::unique_ptr<Binary> &binaryObject);
         Token::literal_t operator()(std::unique_ptr<Group> &groupObject);
@@ -52,16 +50,16 @@ namespace TinyC::Expr{
 
 namespace TinyC::Stmt{
     struct EvaluateVisitor{
-        table_t table;
+        EnvObject environment;
         void operator()(std::unique_ptr<FuncDecl> &funcDeclObject);
-        void operator()(std::unique_ptr<VarDecl> &varDeclObject);
+        void operator()(std::unique_ptr<VarDecl> &varDeclObject) const;
         void operator()(std::unique_ptr<IfStmt> &ifStmtObject);
         void operator()(std::unique_ptr<WhileStmt> &whileStmtObject);
         void operator()(std::unique_ptr<AssignStmt> &assignStmtObject);
         void operator()(std::unique_ptr<ReturnStmt> &returnStmtObject);
         void operator()(std::unique_ptr<Block> &blockObject);
         void operator()(std::unique_ptr<PrintStmt> &printObject) const;
-        void dump_table();
+        void dump_table() const;
     };
 }
 

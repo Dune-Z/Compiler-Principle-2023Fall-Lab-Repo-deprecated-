@@ -1,6 +1,7 @@
 #include "evaluator.hpp"
 #include "environment.hpp"
 #include <iostream>
+#include <utility>
 
 namespace TinyC::Token{
     void PrintVisitor::operator()(int value) const {
@@ -201,7 +202,7 @@ namespace TinyC::Token{
 }
 
 namespace TinyC::Expr{
-    EvaluateVisitor::EvaluateVisitor(const table_t &table): table{table} {}
+    EvaluateVisitor::EvaluateVisitor(EnvObject environment): environment{std::move(environment)} {}
 
     Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Literal> &literalObject) {
         auto literal = literalObject->literal.literal;
@@ -211,17 +212,13 @@ namespace TinyC::Expr{
         return literal;
     }
 
-    Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Variable> &varObject) {
-        auto found = table.find(varObject->identifier.lexeme);
-        if(found == table.end()) {
-            // TODO: Handling Error.
-            //  the identifier must be assigned in VarDecl() or AssignStmt() prior to this.
-        }
-        auto value = found->second;
-        if(!value.first.has_value()) {
-            // TODO: Handling Error.
-        }
-        return value.first;
+    Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Variable> &varObject) const {
+        return environment->get(varObject->identifier);
+    }
+
+    Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Call> &callObject) {
+        if(callObject->isCall) {
+        } else std::visit(*this, callObject->callee);
     }
 
     Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Unary> &unaryObject) {
@@ -249,32 +246,18 @@ namespace TinyC::Stmt{
             std::visit(*this, stmt);
     }
 
-    void EvaluateVisitor::operator()(std::unique_ptr<VarDecl> &varDeclObject) {
-        auto find = table.find(varDeclObject->variable.lexeme);
-        if(find != table.end()){
-            // TODO: Handling Error.
-            //  support environment scope, variable in different scope can have same name.
-            throw std::overflow_error("");
-        }
-        Expr::EvaluateVisitor visitor{table};
+    void EvaluateVisitor::operator()(std::unique_ptr<VarDecl> &varDeclObject) const {
+        Expr::EvaluateVisitor visitor{environment};
         auto type = varDeclObject->type.type;
         auto expr = std::visit(visitor, varDeclObject->expr);
         switch (type) {
+            case Token::TOKEN_TYPE_FLOAT:
             case Token::TOKEN_TYPE_STRING:
-                table.insert({varDeclObject->variable.lexeme, std::make_pair(expr, type)});
+                environment->define(varDeclObject->variable, expr.value(), type);
                 break;
             case Token::TOKEN_TYPE_INT:
-                table.insert({varDeclObject->variable.lexeme, std::make_pair(
-                        std::get<int>(expr.value()),
-                        type)});
-                break;
             case Token::TOKEN_TYPE_BOOLEAN:
-                table.insert({varDeclObject->variable.lexeme, std::make_pair(
-                        bool(std::get<int>(expr.value())),
-                        type)});
-                break;
-            case Token::TOKEN_TYPE_FLOAT:
-                table.insert({varDeclObject->variable.lexeme, std::make_pair(expr, type)});
+                environment->define(varDeclObject->variable, std::get<int>(expr.value()), type);
                 break;
             default:
                 // TODO: Handling Error.
@@ -283,7 +266,7 @@ namespace TinyC::Stmt{
     }
 
     void EvaluateVisitor::operator()(std::unique_ptr<IfStmt> &ifStmtObject) {
-        Expr::EvaluateVisitor visitor{table};
+        Expr::EvaluateVisitor visitor{environment};
         auto condition = std::visit(visitor, ifStmtObject->condition);
         if(!condition.has_value()){
             // TODO: Handling Error.
@@ -295,7 +278,7 @@ namespace TinyC::Stmt{
     }
 
     void EvaluateVisitor::operator()(std::unique_ptr<WhileStmt> &whileStmtObject) {
-        while(auto condition = std::visit(Expr::EvaluateVisitor{table}, whileStmtObject->condition)) {
+        while(auto condition = std::visit(Expr::EvaluateVisitor{environment}, whileStmtObject->condition)) {
             if(!condition.has_value()){
                 // TODO: Handling Error.
                 throw std::overflow_error("");
@@ -306,18 +289,15 @@ namespace TinyC::Stmt{
     }
 
     void EvaluateVisitor::operator()(std::unique_ptr<AssignStmt> &assignStmtObject) {
-        auto find = table.find(assignStmtObject->identifier.lexeme);
-        if(find == table.end()) {
-            // TODO: Handling Error.
-            throw std::overflow_error("");
-        }
-        Expr::EvaluateVisitor visitor{table};
+        Expr::EvaluateVisitor visitor{environment};
         auto value = std::visit(visitor, assignStmtObject->expr);
         // TODO: Add Type Check.
-        find->second.first = value;
+        environment->set(assignStmtObject->identifier, value);
     }
 
     void EvaluateVisitor::operator()(std::unique_ptr<ReturnStmt> &returnStmtObject) {
+        Expr::EvaluateVisitor visitor{environment};
+        auto returnValue = std::visit(visitor, returnStmtObject->expr);
         // TODO: Support Function Return.
     }
 
@@ -327,7 +307,7 @@ namespace TinyC::Stmt{
     }
 
     void EvaluateVisitor::operator()(std::unique_ptr<PrintStmt> &printObject) const {
-        Expr::EvaluateVisitor visitor{table};
+        Expr::EvaluateVisitor visitor{environment};
         auto literal = std::visit(visitor, printObject->expr);
         if(!literal.has_value()){
             // TODO: Handling Error.
@@ -337,21 +317,7 @@ namespace TinyC::Stmt{
         std::visit(printer, literal.value());
     }
 
-    void EvaluateVisitor::dump_table() {
-        for(auto &x: table){
-            std::cout << "Variable: " << x.first << "; Type: " << x.second.second << "; Value: ";
-            if(x.second.second == TinyC::Token::TOKEN_TYPE_STRING)
-                std::cout << std::get<std::string>(x.second.first.value());
-            if(x.second.second == TinyC::Token::TOKEN_TYPE_INT)
-                std::cout << std::get<int>(x.second.first.value());
-            if(x.second.second == TinyC::Token::TOKEN_TYPE_BOOLEAN)
-                std::cout << bool(std::get<int>(x.second.first.value()));
-            if(x.second.second == TinyC::Token::TOKEN_TYPE_FLOAT){
-                if(std::holds_alternative<int>(x.second.first.value()))
-                    std::cout << std::get<int>(x.second.first.value());
-                else std::cout << std::get<double>(x.second.first.value());
-            }
-            std::cout << std::endl;
-        }
+    void EvaluateVisitor::dump_table() const {
+        environment->dump_table();
     }
 }

@@ -7,17 +7,19 @@
 namespace TinyC::Expr{
     Literal::Literal(const Token::Token &literal): literal(literal) {}
     Variable::Variable(const Token::Token& identifier): identifier{identifier} {}
+    Call::Call(bool isCall, ExprObject callee, args_call_t args): isCall{isCall}, callee{std::move(callee)}, args{std::move(args)} {}
     Unary::Unary(const Token::Token& op, ExprObject rhs): op{op}, rhs{std::move(rhs)} {}
     Binary::Binary(const Token::Token& op, ExprObject lhs, ExprObject rhs): op{op}, lhs{std::move(lhs)}, rhs{std::move(rhs)} {}
     Group::Group(ExprObject expr): expr{std::move(expr)} {}
+
 }
 
 namespace TinyC::Stmt{
     VarDecl::VarDecl(const Token::Token &type, const Token::Token &variable, Expr::ExprObject expr)
     : type{type}, variable{variable}, expr{std::move(expr)} {}
 
-    FuncDecl::FuncDecl(const Token::Token &type, const Token::Token &function, std::vector<StmtObject> functionBlock)
-    : type{type}, function{function}, functionBlock{std::move(functionBlock)} {}
+    FuncDecl::FuncDecl(const Token::Token &type, const Token::Token &function, args_decl_t args, std::vector<StmtObject> functionBlock)
+    : type{type}, function{function}, args{std::move(args)}, functionBlock{std::move(functionBlock)} {}
 
     IfStmt::IfStmt(Expr::ExprObject condition, StmtObject thenBranch, std::optional<StmtObject> elseBranch)
     : condition{std::move(condition)}, thenBranch{std::move(thenBranch)}, elseBranch{std::move(elseBranch)} {}
@@ -50,7 +52,7 @@ namespace TinyC{
     Token::Token Parser::consume(Token::token_t type, std::string &&message) {
         if(check(type)) return advance();
         // TODO: Handling Error and Show Message.
-        throw std::overflow_error("");
+        throw std::overflow_error(message);
     }
     Token::Token Parser::advance() {
         if(!isAtEnd()) current++;
@@ -72,12 +74,23 @@ namespace TinyC{
         Token::Token type = previous();
         Token::Token function = consume(Token::TOKEN_IDENTIFIER, "Expect function name after return type.");
         consume(Token::TOKEN_LEFT_PAREN, "Expect '(' after function name.");
-        // TODO: Support Passing Arguments to Function.
-        consume(Token::TOKEN_RIGHT_PAREN, "Expect ')' after arguments.");
+        Stmt::args_decl_t args;
+        while(!match(Token::TOKEN_RIGHT_PAREN)) {
+            if(!match(Token::TOKEN_TYPE_INT, Token::TOKEN_TYPE_FLOAT, Token::TOKEN_TYPE_STRING, Token::TOKEN_TYPE_BOOLEAN))
+                // TODO: Handling Error.
+                ;
+            Token::token_t argType = previous().type;
+            Token::Token arg = consume(Token::TOKEN_IDENTIFIER, "Expected identifier after type.");
+            args.emplace_back(argType, arg);
+            if(!match(Token::TOKEN_RIGHT_PAREN))
+                consume(Token::TOKEN_COMMA, "Expect ',' to divide arguments");
+            else break;
+        }
+        // consume(Token::TOKEN_RIGHT_PAREN, "Expect ')' after arguments.");
         consume(Token::TOKEN_LEFT_BRACE, "Expect '{' after '('.");
         std::vector<Stmt::StmtObject> block = Block();
 
-        return std::make_unique<Stmt::FuncDecl>(type, function, std::move(block));
+        return std::make_unique<Stmt::FuncDecl>(type, function, args, std::move(block));
     }
 
     Stmt::StmtObject Parser::VarDecl() {
@@ -155,8 +168,6 @@ namespace TinyC{
     }
 
     Expr::ExprObject Parser::Expression() {
-        if(match(Token::TOKEN_STRING))
-            return std::make_unique<Expr::Literal>(previous());
         return LogicOrExpr();
     }
 
@@ -223,14 +234,30 @@ namespace TinyC{
     Expr::ExprObject Parser::UnaryExpr() {
         if(match(Token::TOKEN_OPERATOR_BANG, Token::TOKEN_OPERATOR_SUB)) {
             Token::Token op = previous();
-            Expr::ExprObject expr = PrimaryExpr();
+            Expr::ExprObject expr = CallExpr();
             return std::make_unique<Expr::Unary>(op, std::move(expr));
-        } else return PrimaryExpr();
-        // TODO: Support function call.
+        } else return CallExpr();
+    }
+
+    Expr::ExprObject Parser::CallExpr() {
+        bool isCall = false;
+        Expr::args_call_t args;
+        Expr::ExprObject primary = PrimaryExpr();
+        if(match(Token::TOKEN_LEFT_PAREN)) {
+            isCall = true;
+            while(!match(Token::TOKEN_RIGHT_PAREN)){
+                args.push_back(Expression());
+                if(!match(Token::TOKEN_RIGHT_PAREN))
+                    consume(Token::TOKEN_COMMA, "Expect ',' to divide argument.");
+                else break;
+            }
+        }
+
+        return std::make_unique<Expr::Call>(isCall, std::move(primary), std::move(args));
     }
 
     Expr::ExprObject Parser::PrimaryExpr() {
-        if(match(Token::TOKEN_NUMBER)) return std::make_unique<Expr::Literal>(previous());
+        if(match(Token::TOKEN_NUMBER) || match(Token::TOKEN_STRING)) return std::make_unique<Expr::Literal>(previous());
         if(match(Token::TOKEN_IDENTIFIER)) return std::make_unique<Expr::Variable>(previous());
         if(match(Token::TOKEN_LEFT_PAREN)) {
             Expr::ExprObject expr = Expression();

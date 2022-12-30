@@ -31,6 +31,19 @@ namespace TinyC::Expr{
         out << "\033[35mIdentifier \033[0m" << identifier.lexeme << "\033[33m<line: " << identifier.line << ">\033[0m\n";
     }
 
+    void DumpVisitor::operator()(std::unique_ptr<Call> &callObject) {
+        if(!callObject->isCall) {
+            std::visit(*this, callObject->callee);
+        } else {
+            out << "\033[35mFuncCall \033[0m";
+            std::visit(*this, callObject->callee);
+            if(!callObject->args.empty()) {
+                for(auto &x: callObject->args)
+                    std::visit(*this, x);
+            }
+        }
+    }
+
     void DumpVisitor::operator()(std::unique_ptr<Unary> &unaryObject) {
         auto op = unaryObject->op;
         auto &expr = unaryObject->rhs;
@@ -101,10 +114,10 @@ namespace TinyC::Stmt{
         out << "\033[32mVariableDecl\033[0m " << varDeclObject->variable.lexeme;
         out << "\033[33m<line: " << varDeclObject->variable.line << ">\033[0m";
         switch(varDeclObject->type.type){
-            case Token::TOKEN_TYPE_INT: out << "\033[32m 'int()'\033[0m" << std::endl; break;
-            case Token::TOKEN_TYPE_FLOAT: out << "\033[32m 'float()'\033[0m" << std::endl; break;
-            case Token::TOKEN_TYPE_BOOLEAN: out << "\033[32m 'boolean()'\033[0m" << std::endl; break;
-            case Token::TOKEN_TYPE_STRING: out << "\033[32m 'string()'\033[0m" << std::endl; break;
+            case Token::TOKEN_TYPE_INT: out << "\033[32m 'int'\033[0m" << std::endl; break;
+            case Token::TOKEN_TYPE_FLOAT: out << "\033[32m 'float'\033[0m" << std::endl; break;
+            case Token::TOKEN_TYPE_BOOLEAN: out << "\033[32m 'boolean'\033[0m" << std::endl; break;
+            case Token::TOKEN_TYPE_STRING: out << "\033[32m 'string'\033[0m" << std::endl; break;
             default:
                 // TODO: Handling Error.
                 throw std::overflow_error("");

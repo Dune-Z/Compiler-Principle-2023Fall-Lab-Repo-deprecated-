@@ -8,6 +8,7 @@
 namespace TinyC::Expr{
     struct Literal;
     struct Variable;
+    struct Call;
     struct Unary;
     struct Binary;
     struct Group;
@@ -15,10 +16,12 @@ namespace TinyC::Expr{
     using ExprObject = std::variant<
             std::unique_ptr<Literal>,
             std::unique_ptr<Variable>,
+            std::unique_ptr<Call>,
             std::unique_ptr<Unary>,
             std::unique_ptr<Binary>,
             std::unique_ptr<Group>
             >;
+    using args_call_t = std::vector<ExprObject>;
 
     struct Literal{
         Token::Token literal;
@@ -28,6 +31,13 @@ namespace TinyC::Expr{
     struct Variable{
         Token::Token identifier;
         explicit Variable(const Token::Token& identifier);
+    };
+
+    struct Call{
+        bool isCall;
+        ExprObject callee;
+        args_call_t args;
+        Call(bool isCall, ExprObject callee, args_call_t args);
     };
 
     struct Unary{
@@ -68,6 +78,7 @@ namespace TinyC::Stmt{
             std::unique_ptr<Block>,
             std::unique_ptr<PrintStmt>
             >;
+    using args_decl_t = std::vector<std::pair<Token::token_t, Token::Token>>;
 
     struct VarDecl{
         Token::Token type;
@@ -79,8 +90,9 @@ namespace TinyC::Stmt{
     struct FuncDecl{
         Token::Token type;
         Token::Token function;
+        args_decl_t args;
         std::vector<StmtObject> functionBlock;
-        FuncDecl(const Token::Token &type, const Token::Token &function, std::vector<StmtObject> functionBlock);
+        FuncDecl(const Token::Token &type, const Token::Token &function, args_decl_t args, std::vector<StmtObject> functionBlock);
     };
 
     struct IfStmt{
@@ -146,6 +158,7 @@ namespace TinyC{
         Expr::ExprObject TermExpr();
         Expr::ExprObject FactorExpr();
         Expr::ExprObject UnaryExpr();
+        Expr::ExprObject CallExpr();
         Expr::ExprObject PrimaryExpr();
 
         Stmt::StmtObject VarDecl();

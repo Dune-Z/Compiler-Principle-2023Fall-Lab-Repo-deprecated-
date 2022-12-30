@@ -1,0 +1,23 @@
+int fac(int i) {
+    if(i <= 2) return i;
+    return fac(i - 1) * i;
+}
+
+int main() {
+    string str = "Hello World";
+    print(str);
+
+    int i = 1;
+    int k = 0;
+    while(k != 6) {
+        k = k + i;
+        i = i + 1;
+    }
+    int p = fac(k);
+    if(p == 720) {
+        print("Correct Answer");
+    } else {
+        print("Wrong Answer");
+    }
+    print(p);
+}
