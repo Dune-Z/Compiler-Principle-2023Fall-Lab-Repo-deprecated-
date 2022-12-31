@@ -217,8 +217,6 @@ namespace TinyC::Expr{
     }
 
     Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Call> &callObject) {
-        if(callObject->isCall) {
-        } else std::visit(*this, callObject->callee);
     }
 
     Token::literal_t EvaluateVisitor::operator()(std::unique_ptr<Unary> &unaryObject) {
@@ -240,6 +238,8 @@ namespace TinyC::Expr{
 }
 
 namespace TinyC::Stmt{
+    EvaluateVisitor::EvaluateVisitor(EnvObject environment): environment{std::move(environment)} {}
+
     void EvaluateVisitor::operator()(std::unique_ptr<FuncDecl> &funcDeclObject) {
         // TODO: Support Function.
         for(auto &stmt: funcDeclObject->functionBlock)
@@ -302,8 +302,11 @@ namespace TinyC::Stmt{
     }
 
     void EvaluateVisitor::operator()(std::unique_ptr<Block> &blockObject) {
+        auto fork = environment;
+        environment = std::make_shared<Environment>(fork);
         for(auto &stmt: blockObject->statements)
             std::visit(*this, stmt);
+        environment = fork;
     }
 
     void EvaluateVisitor::operator()(std::unique_ptr<PrintStmt> &printObject) const {

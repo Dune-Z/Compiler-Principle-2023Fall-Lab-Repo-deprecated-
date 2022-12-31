@@ -32,15 +32,11 @@ namespace TinyC::Expr{
     }
 
     void DumpVisitor::operator()(std::unique_ptr<Call> &callObject) {
-        if(!callObject->isCall) {
-            std::visit(*this, callObject->callee);
-        } else {
-            out << "\033[35mFuncCall \033[0m";
-            std::visit(*this, callObject->callee);
-            if(!callObject->args.empty()) {
-                for(auto &x: callObject->args)
-                    std::visit(*this, x);
-            }
+        out << "\033[35mFuncCall\033[0m " << callObject->callee.lexeme;
+        out << "\033[33m<line: " << callObject->callee.line << ">\033[0m\n";
+        if(!callObject->args.empty()) {
+            for(auto &x: callObject->args)
+                std::visit(*this, x);
         }
     }
 

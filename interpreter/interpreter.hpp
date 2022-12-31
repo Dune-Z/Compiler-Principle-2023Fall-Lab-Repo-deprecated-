@@ -1,6 +1,7 @@
 #ifndef INTERPRETER_INTERPRETER_HPP
 #define INTERPRETER_INTERPRETER_HPP
 #include "evaluator.hpp"
+#include "environment.hpp"
 #include "parser/parser.hpp"
 #include "parser/dumper.hpp"
 #include "parser/scanner.hpp"
@@ -11,12 +12,15 @@
 namespace TinyC{
     class Interpreter{
     private:
-        std::ostream &out;
-        Stmt::EvaluateVisitor evaluator;
-        Stmt::DumpVisitor dumper{std::cout};
-        std::vector<Stmt::StmtObject> statements;
+        static int working;
+        static EnvObject vtable;
+        static std::vector<Token::literal_t> fvalue;
+        static std::unordered_map<std::string, int> ftable;
+        static std::vector<Stmt::StmtObject> statements;
+
+
     public:
-        Interpreter(std::ostream &out, const std::string &source);
+        explicit Interpreter(const std::string &source);
         void interpret();
         void ast_dump();
     };

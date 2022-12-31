@@ -1,13 +1,14 @@
 #ifndef INTERPRETER_ENVIRONMENT_HPP
 #define INTERPRETER_ENVIRONMENT_HPP
 #include "parser/token.hpp"
+#include "parser/parser.hpp"
 #include <unordered_map>
 
 namespace TinyC{
     class Environment;
     struct Value;
     using EnvObject = std::shared_ptr<Environment>;
-    using table_t = std::unordered_map<std::string, Value>;
+    using vtable_t = std::unordered_map<std::string, Value>;
 
     struct Value{
         Token::token_t type;
@@ -17,7 +18,7 @@ namespace TinyC{
     class Environment{
     private:
         EnvObject parent;
-        table_t table;
+        vtable_t vtable;
     public:
         Environment() = default;
         explicit Environment(EnvObject parent);

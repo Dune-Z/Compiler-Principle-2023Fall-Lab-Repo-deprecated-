@@ -1,10 +1,12 @@
 int fac(int i) {
-    if(i <= 2) return i;
+    if(i <= 2) {
+        return i;
+    }
     return fac(i - 1) * i;
 }
 
+string str = "Hello World";
 int main() {
-    string str = "Hello World";
     print(str);
 
     int i = 1;

@@ -51,6 +51,7 @@ namespace TinyC::Expr{
 namespace TinyC::Stmt{
     struct EvaluateVisitor{
         EnvObject environment;
+        explicit EvaluateVisitor(EnvObject environment);
         void operator()(std::unique_ptr<FuncDecl> &funcDeclObject);
         void operator()(std::unique_ptr<VarDecl> &varDeclObject) const;
         void operator()(std::unique_ptr<IfStmt> &ifStmtObject);

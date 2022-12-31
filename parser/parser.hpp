@@ -5,7 +5,7 @@
 #include <memory>
 #include <variant>
 
-namespace TinyC::Expr{
+namespace TinyC::Expr {
     struct Literal;
     struct Variable;
     struct Call;
@@ -35,9 +35,9 @@ namespace TinyC::Expr{
 
     struct Call{
         bool isCall;
-        ExprObject callee;
+        Token::Token callee;
         args_call_t args;
-        Call(bool isCall, ExprObject callee, args_call_t args);
+        Call(bool isCall, const Token::Token &callee, args_call_t args);
     };
 
     struct Unary{
@@ -162,6 +162,7 @@ namespace TinyC{
         Expr::ExprObject PrimaryExpr();
 
         Stmt::StmtObject VarDecl();
+        Stmt::StmtObject VarDecl(const Token::Token &type, const Token::Token &variable);
         Stmt::StmtObject FuncDecl();
         Stmt::StmtObject Stmt();
         Stmt::StmtObject IfStmt();
