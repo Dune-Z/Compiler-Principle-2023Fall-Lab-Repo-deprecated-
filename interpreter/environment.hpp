@@ -1,33 +1,52 @@
-#ifndef INTERPRETER_ENVIRONMENT_HPP
-#define INTERPRETER_ENVIRONMENT_HPP
-#include "parser/token.hpp"
-#include "parser/parser.hpp"
+#ifndef TINYC_ENVIRONMENT_HPP
+#define TINYC_ENVIRONMENT_HPP
+#include "Lex/Token.hpp"
+#include "AST/AST.hpp"
 #include <unordered_map>
+#include <vector>
 
-namespace TinyC{
-    class Environment;
-    struct Value;
-    using EnvObject = std::shared_ptr<Environment>;
-    using vtable_t = std::unordered_map<std::string, Value>;
-
-    struct Value{
-        Token::token_t type;
-        Token::literal_t value;
+namespace tinyc{
+    struct ValueInfo {
+        int funcIndex = 0;
+        TokenKind type;
+        Literal literal;
+        ValueInfo(TokenKind type, Literal literal)
+                : type(type), literal(std::move(literal)) {}
+        ValueInfo(int funcIndex, TokenKind type, Literal literal)
+                : funcIndex(funcIndex), type(type), literal(std::move(literal)) {}
     };
 
-    class Environment{
+    using VarTable = std::unordered_map<std::string, ValueInfo*>;
+    using FuncTable = std::unordered_map<std::string, ValueInfo*>;
+    class Closure {
     private:
-        EnvObject parent;
-        vtable_t vtable;
+        std::vector<VarTable*> localVarTable;
+    public:
+        Closure() = default;
+        void enterClosure();
+        void exitClosure();
+        void set(const std::string &name, const Literal &literal);
+        void set(const std::string &name, TokenKind type, const Literal &literal);
+        ValueInfo *get(const std::string &name);
+    };
+
+    class Environment {
+    private:
+        std::string working = "main";
+        VarTable globalVarTable;
+        FuncTable globalFuncTable;
+        std::unordered_map<std::string, Closure*> closures;
     public:
         Environment() = default;
-        explicit Environment(EnvObject parent);
-        void define(const Token::Token &token, const Token::literal_t &literal, const Token::token_t &type);
-        void set(const Token::Token &token, const Token::literal_t &literal);
-        Token::literal_t get(const Token::Token &token);
-        void dump_table();
+        void setGlobalVar(const std::string &name, const Literal &literal);
+        void setGlobalVar(const std::string &name, TokenKind type, const Literal &literal);
+        void setGlobalFunc(Literal literal);
+        void setGlobalFunc(const std::string &name, int index, TokenKind type);
+        std::string switchEnv(std::string newWorking, bool initialize = true);
+        Closure* getClosure() {return closures[working];}
+        int getWorkingFunc() {return globalFuncTable[working]->funcIndex;}
+        Literal getReturnValue() {return globalFuncTable[working]->literal;}
     };
 }
 
-
-#endif //INTERPRETER_ENVIRONMENT_HPP
+#endif //TINYC_ENVIRONMENT_HPP

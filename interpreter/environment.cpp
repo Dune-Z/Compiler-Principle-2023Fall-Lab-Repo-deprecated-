@@ -1,55 +1,84 @@
-#include "environment.hpp"
-#include <memory>
-#include <unordered_map>
-#include <iostream>
+#include "Environment.hpp"
+
 #include <utility>
-
-namespace TinyC{
-    Environment::Environment(EnvObject parent): parent{std::move(parent)}, vtable{} {}
-
-    void Environment::define(const Token::Token &token, const Token::literal_t &literal, const Token::token_t &type) {
-        vtable.insert({token.lexeme, Value{type, literal}});
-    }
-
-    void Environment::set(const Token::Token &token, const Token::literal_t &literal) {
-        auto found = vtable.find(token.lexeme);
-        if(found == vtable.end()) {
-            if(parent) {
-                parent->set(token, literal);
+namespace tinyc {
+    void Closure::enterClosure() { localVarTable.push_back(new VarTable()); }
+    void Closure::exitClosure() { localVarTable.pop_back(); }
+    void Closure::set(const std::string &name, const Literal &literal) {
+        for(auto it = localVarTable.rbegin(); it != localVarTable.rend(); it++) {
+            auto &env = *it;
+            auto found = env->find(name);
+            if(found != env->end()) {
+                found->second->literal= literal;
                 return;
             }
-            else throw std::overflow_error("Assign before declaration.");
-            // TODO: Handling Error.
         }
-        vtable[token.lexeme].value = literal;
+        throw std::runtime_error("Variable assign before declaration.");
     }
 
-    Token::literal_t Environment::get(const Token::Token &token) {
-        auto found = vtable.find(token.lexeme);
-        if(found == vtable.end()) {
-            if(parent) return parent->get(token);
-            else throw std::overflow_error("Assign before declaration.");
-            // TODO: Handling Error.
+    void Closure::set(const std::string &name, TokenKind type, const Literal &literal) {
+        if(localVarTable.empty()) {
+            localVarTable.push_back(new VarTable());
         }
-        return vtable[token.lexeme].value;
+        auto env = *localVarTable.rbegin();
+        auto found = env->find(name);
+        if(found != env->end()) {
+            throw std::runtime_error("Variable redefinition.");
+        }
+        auto valueInfo = new ValueInfo(type, literal);
+        env->insert({name, valueInfo});
     }
 
-    void Environment::dump_table() {
-        for(auto &x: vtable){
-            std::cout << "Variable: " << x.first << "; Type: " << x.second.type << "; Value: ";
-            if(x.second.type == TinyC::Token::TOKEN_TYPE_STRING)
-                std::cout << std::get<std::string>(x.second.value.value());
-            if(x.second.type == TinyC::Token::TOKEN_TYPE_INT)
-                std::cout << std::get<int>(x.second.value.value());
-            if(x.second.type == TinyC::Token::TOKEN_TYPE_BOOLEAN)
-                std::cout << bool(std::get<int>(x.second.value.value()));
-            if(x.second.type == TinyC::Token::TOKEN_TYPE_FLOAT){
-                if(std::holds_alternative<int>(x.second.value.value()))
-                    std::cout << std::get<int>(x.second.value.value());
-                else std::cout << std::get<double>(x.second.value.value());
+    ValueInfo* Closure::get(const std::string &name) {
+        for(auto it = localVarTable.rbegin(); it != localVarTable.rend(); it++) {
+            auto &env = *it;
+            auto found = env->find(name);
+            if(found != env->end()) {
+                return found->second;
             }
-            std::cout << std::endl;
         }
-        if(parent != nullptr) parent->dump_table();
+        throw std::runtime_error("Variable access before declaration.");
+    }
+
+    void Environment::setGlobalVar(const std::string &name, const Literal &literal) {
+        auto found = globalVarTable.find(name);
+        if(found == globalVarTable.end()) {
+            throw std::runtime_error("Variable assign before declaration.");
+        }
+        globalVarTable[name]->literal = literal;
+    }
+
+    void Environment::setGlobalVar(const std::string &name, TokenKind type, const Literal &literal) {
+        auto found = globalVarTable.find(name);
+        if(found != globalVarTable.end()) {
+            throw std::runtime_error("Variable redefinition.");
+        }
+        auto valueInfo = new ValueInfo(type, literal);
+        globalVarTable.insert({name, valueInfo});
+    }
+
+    void Environment::setGlobalFunc(Literal literal) {
+        globalFuncTable[working]->literal = std::move(literal);
+    }
+
+    void Environment::setGlobalFunc(const std::string &name, int index, TokenKind type) {
+        auto found = globalFuncTable.find(name);
+        if(found != globalVarTable.end()) {
+            throw std::runtime_error("Variable redefinition.");
+        }
+        auto valueInfo = new ValueInfo(index, type, std::nullopt);
+        globalFuncTable.insert({name, valueInfo});
+        closures.insert({name, new Closure()});
+    }
+
+    std::string Environment::switchEnv(std::string newWorking, bool initialize) {
+        auto oldWorking = working;
+        working = std::move(newWorking);
+        if(initialize) {
+            for(auto &varEntry: globalVarTable) {
+                closures[working]->set(varEntry.first, varEntry.second->type, varEntry.second->literal);
+            }
+        }
+        return oldWorking;
     }
 }
