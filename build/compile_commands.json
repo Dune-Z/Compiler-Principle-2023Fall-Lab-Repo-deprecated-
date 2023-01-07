@@ -1,0 +1,67 @@
+[
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/main.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/main.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/main.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/Lex/Token.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/Lex/Token.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/Lex/Token.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/Lex/Lexer.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/Lex/Lexer.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/Lex/Lexer.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/Parse/Parser.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/Parse/Parser.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/Parse/Parser.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/Parse/ParseStmt.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/Parse/ParseStmt.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/Parse/ParseStmt.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/Parse/ParseExpr.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/Parse/ParseExpr.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/Parse/ParseExpr.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/AST/AST.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/AST/AST.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/AST/AST.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/Interpreter/Interpreter.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/Interpreter/Interpreter.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/Interpreter/Interpreter.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/Interpreter/Environment.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/Interpreter/Environment.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/Interpreter/Environment.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/AST/ASTDumper.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/AST/ASTDumper.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/AST/ASTDumper.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/Interpreter/EvaluateStmt.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/Interpreter/EvaluateStmt.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/Interpreter/EvaluateStmt.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/Interpreter/EvaluateExpr.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/Interpreter/EvaluateExpr.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/Interpreter/EvaluateExpr.cpp"
+},
+{
+  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -std=gnu++17 -o CMakeFiles/tinyc.dir/AST/ASTVisitor.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc/AST/ASTVisitor.cpp",
+  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc/AST/ASTVisitor.cpp"
+}
+]
