@@ -75,18 +75,21 @@ namespace tinyc {
 
     ExprPtr Parser::parseCallExpr() {
         if(match(TOKEN_IDENTIFIER)) {
-            std::string callee = previous().lexeme;
-            if(!match(TOKEN_LEFT_PAREN)) return new VarExpr(callee);
-            std::vector<ExprPtr> args;
-            while(!match(TOKEN_RIGHT_PAREN)) {
-                args.push_back(parseExpr());
-                if(match(TOKEN_RIGHT_PAREN)) break;
-                consume(TOKEN_COMMA, "Expect ',' to divide argument.");
-            }
-            return new CallExpr(callee, std::move(args));
+            return parseCallExpr(previous().lexeme);
         } else {
             return parsePrimaryExpr();
         }
+    }
+
+    ExprPtr Parser::parseCallExpr(const std::string &callee) {
+        if(!match(TOKEN_LEFT_PAREN)) return new VarExpr(callee);
+        std::vector<ExprPtr> args;
+        while(!match(TOKEN_RIGHT_PAREN)) {
+            args.push_back(parseExpr());
+            if(match(TOKEN_RIGHT_PAREN)) break;
+            consume(TOKEN_COMMA, "Expect ',' to divide argument.");
+        }
+        return new CallExpr(callee, std::move(args));
     }
 
     ExprPtr Parser::parsePrimaryExpr() {

@@ -4,7 +4,7 @@
 #include "Interpreter/Interpreter.hpp"
 
 int main() {
-    tinyc::Parser parser("../test/test1.tc");
+    tinyc::Parser parser("../test/test3.tc");
     tinyc::Interpreter interpreter(parser);
     interpreter.interpret();
     return 0;

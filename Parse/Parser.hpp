@@ -31,6 +31,7 @@ namespace tinyc{
         ExprPtr parseFactorExpr();
         ExprPtr parseUnaryExpr();
         ExprPtr parseCallExpr();
+        ExprPtr parseCallExpr(const std::string &callee);
         ExprPtr parsePrimaryExpr();
 
         StmtPtr parseGlobal();
@@ -40,7 +41,7 @@ namespace tinyc{
         StmtPtr parseStmt();
         StmtPtr parseIfStmt();
         StmtPtr parseWhileStmt();
-        StmtPtr parseAssignStmt();
+        StmtPtr parseAssignStmt(const std::string &variable);
         StmtPtr parseReturnStmt();
         StmtPtr parsePrintStmt();
         std::vector<StmtPtr> parseBlockStmt();

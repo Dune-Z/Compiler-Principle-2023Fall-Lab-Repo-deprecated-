@@ -50,10 +50,16 @@ namespace tinyc{
         if(match(TOKEN_IF)) return parseIfStmt();
         if(match(TOKEN_WHILE)) return parseWhileStmt();
         if(match(TOKEN_TYPE_INT, TOKEN_TYPE_BOOLEAN, TOKEN_TYPE_FLOAT, TOKEN_TYPE_STRING)) return parseVarDecl();
-        if(match(TOKEN_IDENTIFIER)) return parseAssignStmt();
         if(match(TOKEN_RETURN)) return parseReturnStmt();
         if(match(TOKEN_LEFT_BRACE)) return new BlockStmt(parseBlockStmt());
         if(match(TOKEN_PRINT)) return parsePrintStmt();
+        if(match(TOKEN_IDENTIFIER)) {
+            auto name = previous().lexeme;
+            if(match(TOKEN_OPERATOR_EQUAL)) return parseAssignStmt(name);
+            auto call = parseCallExpr(name);
+            consume(TOKEN_SEMICOLON, "Expect ';' after function call.");
+            return call;
+        }
         throw std::runtime_error("Invalid token in statement.");
     }
 
@@ -65,10 +71,7 @@ namespace tinyc{
         auto thenBranch = parseStmt();
         StmtPtr elseBranch = nullptr;
         if(match(TOKEN_ELSE)) elseBranch = parseStmt();
-        return new IfStmt(condition,
-                                        thenBranch,
-                                        elseBranch
-                                        );
+        return new IfStmt(condition, thenBranch, elseBranch);
     }
 
     StmtPtr Parser::parseWhileStmt() {
@@ -78,9 +81,8 @@ namespace tinyc{
         return new WhileStmt(condition, parseStmt());
     }
 
-    StmtPtr Parser::parseAssignStmt() {
-        std::string variable = previous().lexeme;
-        consume(TOKEN_OPERATOR_EQUAL, "Expect '=' after variable in assignment.");
+    StmtPtr Parser::parseAssignStmt(const std::string &variable) {
+//        consume(TOKEN_OPERATOR_EQUAL, "Expect '=' after variable in assignment.");
         auto expr = parseExpr();
         consume(TOKEN_SEMICOLON, "Expect ';' after assignment.");
         return new AssignStmt(variable, expr);

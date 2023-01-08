@@ -32,7 +32,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 40,
+				"line" : 39,
 				"parent" : 0
 			},
 			{
@@ -44,7 +44,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 39,
+				"line" : 38,
 				"parent" : 0
 			}
 		]
@@ -104,9 +104,9 @@
 				9,
 				11,
 				13,
+				14,
 				15,
 				17,
-				18,
 				19
 			]
 		}
@@ -154,9 +154,9 @@
 				9,
 				11,
 				13,
+				14,
 				15,
 				17,
-				18,
 				19
 			]
 		},
@@ -169,8 +169,8 @@
 				6,
 				10,
 				12,
-				14,
 				16,
+				18,
 				20
 			]
 		}
@@ -231,17 +231,6 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "AST/AST.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "AST/AST.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
 			"path" : "Interpreter/Interpreter.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -264,6 +253,29 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "Interpreter/InterpretStmt.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Interpreter/InterpretExpr.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "AST/AST.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "AST/AST.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "AST/ASTDumper.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -271,18 +283,6 @@
 			"backtrace" : 1,
 			"path" : "AST/ASTDumper.hpp",
 			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Interpreter/EvaluateStmt.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "Interpreter/EvaluateExpr.cpp",
-			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,

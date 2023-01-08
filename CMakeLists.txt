@@ -21,20 +21,19 @@ add_executable(tinyc
         Parse/Parser.hpp
         Parse/ParseStmt.cpp
         Parse/ParseExpr.cpp
-        AST/AST.cpp
-        AST/AST.hpp
         Interpreter/Interpreter.cpp
         Interpreter/Interpreter.hpp
         Interpreter/Environment.cpp
         Interpreter/Environment.hpp
+        Interpreter/InterpretStmt.cpp
+        Interpreter/InterpretExpr.cpp
+        AST/AST.cpp
+        AST/AST.hpp
         AST/ASTDumper.cpp
         AST/ASTDumper.hpp
-        Interpreter/EvaluateStmt.cpp
-        Interpreter/EvaluateExpr.cpp
         AST/ASTVisitor.cpp
         AST/ASTVisitor.hpp
         )
-
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     target_link_libraries(tinyc ${Boost_LIBRARIES})
