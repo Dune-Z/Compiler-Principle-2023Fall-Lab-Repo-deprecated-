@@ -7,7 +7,7 @@
 namespace tinyc {
     struct ValueInfo {
         int function = 0;
-        TokenKind type;
+        TokenKind type = TOKEN_EOF;
         Literal literal;
 
         ValueInfo() = default;
@@ -28,6 +28,7 @@ namespace tinyc {
         std::string working = "main";
     public:
         Environment() = default;
+        ~Environment();
         void enterClosure();
         void exitClosure();
         void setGlobalVar(const std::string &name, ValueInfo* valueInfo);

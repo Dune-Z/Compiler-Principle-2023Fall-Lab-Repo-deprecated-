@@ -1,11 +1,41 @@
 #include <fstream>
 #include <sstream>
+#include <iostream>
 #include "Parse/Parser.hpp"
 #include "Interpreter/Interpreter.hpp"
+#include "boost/program_options.hpp"
 
-int main() {
-    tinyc::Parser parser("../test/test3.tc");
-    tinyc::Interpreter interpreter(parser);
-    interpreter.interpret();
-    return 0;
+namespace bpo = boost::program_options;
+void parseCommandLineOption(const bpo::variables_map &vm, const bpo::options_description &description) {
+    std::string filename;
+
+    if(vm.count("help")) {
+        std::cout << description << std::endl;
+        return;
+    }
+
+    if(vm.count("file")) {
+        filename = vm["file"].as<std::string>();
+        tinyc::Parser parser(filename);
+        if(vm.count("ast-dump")) {
+        }
+        tinyc::Interpreter interpreter(parser);
+        interpreter.interpret();
+
+    } else {
+        std::cerr << "Expected filename. Usage: --file <filename>" <<  std::endl;
+        return;
+    }
+}
+
+int main(int argc, const char* argv[]){
+    bpo::options_description description("");
+    bpo::variables_map vm;
+    description.add_options()
+            ("help, h", "Help Screen")
+            ("file, f", bpo::value<std::string>(), "filename")
+            ("interpret", "call for interpreter")
+            ("ast-dump", "print nested AST");
+    bpo::store(bpo::parse_command_line(argc, argv, description), vm);
+    parseCommandLineOption(vm, description);
 }

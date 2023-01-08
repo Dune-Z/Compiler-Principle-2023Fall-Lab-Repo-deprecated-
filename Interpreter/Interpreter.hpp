@@ -7,7 +7,7 @@
 #include <vector>
 
 namespace tinyc {
-    class Interpreter: public ASTVisitor {
+    class Interpreter final: public ASTVisitor {
     private:
         bool atReturn = false;
         Environment environment;
@@ -15,6 +15,7 @@ namespace tinyc {
         Literal evaluate(ASTNode *node);
     public:
         explicit Interpreter(Parser &parser);
+        ~Interpreter() final;
         Literal interpret();
         Literal visit(LiteralExpr* exprNode) override;
         Literal visit(VarExpr* exprNode) override;

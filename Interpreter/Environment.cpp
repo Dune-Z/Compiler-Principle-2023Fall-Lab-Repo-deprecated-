@@ -1,5 +1,12 @@
 #include "Environment.hpp"
 namespace tinyc {
+    Environment::~Environment() {
+        for(auto &closure: closures){
+            for(auto &table: *closure.second) {delete table;}
+            delete closure.second;
+        }
+    }
+
     void Environment::enterClosure() {
         closures[working]->push_back(new ValueTable());
     }
