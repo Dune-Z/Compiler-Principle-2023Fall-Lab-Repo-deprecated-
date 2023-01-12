@@ -8,7 +8,7 @@ namespace tinyc {
     ExprPtr Parser::parseLogicOrExpr() {
         ExprPtr expr = parseLogicAndExpr();
         if(match(TOKEN_OPERATOR_OR)) {
-            auto op = previous().type;
+            auto op = previous();
             auto rest = parseLogicOrExpr();
             expr = new BinaryExpr(op, expr, rest);
         }
@@ -18,7 +18,7 @@ namespace tinyc {
     ExprPtr Parser::parseLogicAndExpr() {
         ExprPtr expr = parseEqualityExpr();
         if(match(TOKEN_OPERATOR_AND)) {
-            auto op = previous().type;
+            auto op = previous();
             auto rest = parseLogicAndExpr();
             expr = new BinaryExpr(op, expr, rest);
         }
@@ -28,7 +28,7 @@ namespace tinyc {
     ExprPtr Parser::parseEqualityExpr() {
         ExprPtr expr = parseComparisonExpr();
         if(match(TOKEN_OPERATOR_BANG_EQUAL, TOKEN_OPERATOR_EQUAL_EQUAL)) {
-            auto op = previous().type;
+            auto op = previous();
             auto rest = parseEqualityExpr();
             expr = new BinaryExpr(op, expr, rest);
         }
@@ -38,7 +38,7 @@ namespace tinyc {
     ExprPtr Parser::parseComparisonExpr() {
         ExprPtr expr = parseTermExpr();
         if(match(TOKEN_OPERATOR_LESS, TOKEN_OPERATOR_LESS_EQUAL, TOKEN_OPERATOR_GREATER, TOKEN_OPERATOR_GREATER_EQUAL)) {
-            auto op = previous().type;
+            auto op = previous();
             auto rest = parseComparisonExpr();
             expr = new BinaryExpr(op, expr, rest);
         }
@@ -48,7 +48,7 @@ namespace tinyc {
     ExprPtr Parser::parseTermExpr() {
         ExprPtr expr = parseFactorExpr();
         if(match(TOKEN_OPERATOR_ADD, TOKEN_OPERATOR_SUB)) {
-            auto op = previous().type;
+            auto op = previous();
             auto rest = parseTermExpr();
             expr = new BinaryExpr(op, expr, rest);
         }
@@ -58,7 +58,7 @@ namespace tinyc {
     ExprPtr Parser::parseFactorExpr() {
         ExprPtr expr = parseUnaryExpr();
         if(match(TOKEN_OPERATOR_MUL, TOKEN_OPERATOR_DIV)) {
-            auto op = previous().type;
+            auto op = previous();
             auto rest = parseFactorExpr();
             expr = new BinaryExpr(op, expr, rest);
         }
@@ -67,7 +67,7 @@ namespace tinyc {
 
     ExprPtr Parser::parseUnaryExpr() {
         if(match(TOKEN_OPERATOR_BANG, TOKEN_OPERATOR_SUB)) {
-            auto op = previous().type;
+            auto op = previous();
             auto expr = parseCallExpr();
             return new UnaryExpr(op, expr);
         } else return parseCallExpr();
@@ -75,13 +75,13 @@ namespace tinyc {
 
     ExprPtr Parser::parseCallExpr() {
         if(match(TOKEN_IDENTIFIER)) {
-            return parseCallExpr(previous().lexeme);
+            return parseCallExpr(previous());
         } else {
             return parsePrimaryExpr();
         }
     }
 
-    ExprPtr Parser::parseCallExpr(const std::string &callee) {
+    ExprPtr Parser::parseCallExpr(const Token &callee) {
         if(!match(TOKEN_LEFT_PAREN)) return new VarExpr(callee);
         std::vector<ExprPtr> args;
         while(!match(TOKEN_RIGHT_PAREN)) {
@@ -94,7 +94,7 @@ namespace tinyc {
 
     ExprPtr Parser::parsePrimaryExpr() {
         if(match(TOKEN_NUMBER) || match(TOKEN_STRING)){
-            Literal literal = previous().literal;
+            Token literal = previous();
             return new LiteralExpr(literal);
         }
         if(match(TOKEN_LEFT_PAREN)) {

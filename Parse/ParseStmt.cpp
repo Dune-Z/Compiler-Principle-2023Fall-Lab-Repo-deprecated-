@@ -7,7 +7,7 @@ namespace tinyc{
             throw std::runtime_error("Expect type declaration.");
         }
         TokenKind type = previous().type;
-        std::string name = consume(TOKEN_IDENTIFIER, "Expect identifier after type.").lexeme;
+        Token name = consume(TOKEN_IDENTIFIER, "Expect identifier after type.");
         if(match(TOKEN_LEFT_PAREN)) {
             return parseFuncDecl(std::pair(type, name));
         }
@@ -16,14 +16,14 @@ namespace tinyc{
         }
     }
 
-    StmtPtr Parser::parseFuncDecl(const TypeLexemePair& function) {
-        std::vector<TypeLexemePair> params;
+    StmtPtr Parser::parseFuncDecl(const TypeTokenPair& function) {
+        std::vector<TypeTokenPair> params;
         while(!match(TOKEN_RIGHT_PAREN)) {
             if(!match(TOKEN_TYPE_INT, TOKEN_TYPE_BOOLEAN, TOKEN_TYPE_FLOAT, TOKEN_TYPE_STRING)) {
                 throw std::runtime_error("Expect type declaration.");
             }
             TokenKind type = previous().type;
-            std::string name = consume(TOKEN_IDENTIFIER, "Expect identifier after type.").lexeme;
+            Token name = consume(TOKEN_IDENTIFIER, "Expect identifier after type.");
             params.emplace_back(type, name);
             if(match(TOKEN_RIGHT_PAREN)) break;
             consume(TOKEN_COMMA, "Expect ',' to separate parameters");
@@ -33,7 +33,7 @@ namespace tinyc{
         return new FuncDeclStmt(function, std::move(params), std::move(block));
     }
 
-    StmtPtr Parser::parseVarDecl(const TypeLexemePair& variable) {
+    StmtPtr Parser::parseVarDecl(const TypeTokenPair& variable) {
         ExprPtr expr = nullptr;
         if(match(TOKEN_OPERATOR_EQUAL)) expr = parseExpr();
         consume(TOKEN_SEMICOLON, "Expect ';' after statement.");
@@ -42,7 +42,7 @@ namespace tinyc{
 
     StmtPtr Parser::parseVarDecl() {
         TokenKind type = previous().type;
-        std::string name = consume(TOKEN_IDENTIFIER, "Expect identifier after type.").lexeme;
+        Token name = consume(TOKEN_IDENTIFIER, "Expect identifier after type.");
         return parseVarDecl(std::pair(type, name));
     }
 
@@ -54,7 +54,7 @@ namespace tinyc{
         if(match(TOKEN_LEFT_BRACE)) return new BlockStmt(parseBlockStmt());
         if(match(TOKEN_PRINT)) return parsePrintStmt();
         if(match(TOKEN_IDENTIFIER)) {
-            auto name = previous().lexeme;
+            auto name = previous();
             if(match(TOKEN_OPERATOR_EQUAL)) return parseAssignStmt(name);
             auto call = parseCallExpr(name);
             consume(TOKEN_SEMICOLON, "Expect ';' after function call.");
@@ -81,7 +81,7 @@ namespace tinyc{
         return new WhileStmt(condition, parseStmt());
     }
 
-    StmtPtr Parser::parseAssignStmt(const std::string &variable) {
+    StmtPtr Parser::parseAssignStmt(const Token &variable) {
 //        consume(TOKEN_OPERATOR_EQUAL, "Expect '=' after variable in assignment.");
         auto expr = parseExpr();
         consume(TOKEN_SEMICOLON, "Expect ';' after assignment.");

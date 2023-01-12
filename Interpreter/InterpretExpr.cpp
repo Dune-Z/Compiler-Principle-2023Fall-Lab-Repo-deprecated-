@@ -3,21 +3,21 @@
 
 namespace tinyc {
     Literal Interpreter::visit(LiteralExpr* exprNode) {
-        return exprNode->literal;
+        return exprNode->literal.literal;
     }
 
     Literal Interpreter::visit(VarExpr* exprNode) {
-        return environment.getClosureVar(exprNode->variable);
+        return environment.getClosureVar(exprNode->variable.lexeme);
     }
 
     Literal Interpreter::visit(CallExpr* exprNode) {
         std::vector<Literal> argValues;
         for(auto &arg: exprNode->args) argValues.push_back(evaluate(arg));
-        int index = environment.getGlobalFunc(exprNode->callee);
+        int index = environment.getGlobalFunc(exprNode->callee.lexeme);
         auto function = dynamic_cast<FuncDeclStmt*>(stmts[index]);
 
         auto fork = environment.working;
-        environment.working = exprNode->callee;
+        environment.working = exprNode->callee.lexeme;
         if(environment.working == fork) {
             // Case recursion.
             environment.enterClosure();
@@ -26,12 +26,12 @@ namespace tinyc {
                     function->params[i].first,
                     argValues[i]
                 });
-                environment.setClosureVar(function->params[i].second, valueInfo);
+                environment.setClosureVar(function->params[i].second.lexeme, valueInfo);
             }
         } else {
             // Case normal.
             for(int i = 0; i < argValues.size(); i++) {
-                environment.setClosureVar(function->params[i].second, argValues[i]);
+                environment.setClosureVar(function->params[i].second.lexeme, argValues[i]);
             }
             environment.enterClosure();
         }
@@ -42,12 +42,12 @@ namespace tinyc {
     }
 
     Literal Interpreter::visit(UnaryExpr* exprNode) {
-        UnaryOperationVisitor visitor(exprNode->op);
+        UnaryOperationVisitor visitor(exprNode->op.type);
         return std::visit(visitor, evaluate(exprNode->rhs).value());
     }
 
     Literal Interpreter::visit(BinaryExpr* exprNode) {
-        BinaryOperationVisitor visitor(exprNode->op);
+        BinaryOperationVisitor visitor(exprNode->op.type);
         auto lvalue = evaluate(exprNode->lhs).value();
         auto rvalue = evaluate(exprNode->rhs).value();
         return std::visit(visitor, lvalue, rvalue);

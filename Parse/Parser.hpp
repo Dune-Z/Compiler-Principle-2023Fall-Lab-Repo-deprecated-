@@ -31,17 +31,17 @@ namespace tinyc{
         ExprPtr parseFactorExpr();
         ExprPtr parseUnaryExpr();
         ExprPtr parseCallExpr();
-        ExprPtr parseCallExpr(const std::string &callee);
+        ExprPtr parseCallExpr(const Token &callee);
         ExprPtr parsePrimaryExpr();
 
         StmtPtr parseGlobal();
         StmtPtr parseVarDecl();
-        StmtPtr parseVarDecl(const TypeLexemePair& variable);
-        StmtPtr parseFuncDecl(const TypeLexemePair& function);
+        StmtPtr parseVarDecl(const TypeTokenPair& variable);
+        StmtPtr parseFuncDecl(const TypeTokenPair& function);
         StmtPtr parseStmt();
         StmtPtr parseIfStmt();
         StmtPtr parseWhileStmt();
-        StmtPtr parseAssignStmt(const std::string &variable);
+        StmtPtr parseAssignStmt(const Token &variable);
         StmtPtr parseReturnStmt();
         StmtPtr parsePrintStmt();
         std::vector<StmtPtr> parseBlockStmt();

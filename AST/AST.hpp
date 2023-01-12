@@ -28,48 +28,46 @@ namespace tinyc{
     using Expr = ASTNode;
     using StmtPtr = Stmt*;
     using ExprPtr = Expr*;
-    using IndexLiteralPair = std::pair<int, Literal>;
-    using TypeLexemePair = std::pair<TokenKind, std::string>;
-    using TypeLiteralPair = std::pair<TokenKind, Literal>;
+    using TypeTokenPair = std::pair<TokenKind, Token>;
 
     struct LiteralExpr: public Expr {
-        Literal literal;
-        explicit LiteralExpr(Literal literal): literal(std::move(literal)) {}
+        Token literal;
+        explicit LiteralExpr(Token literal): literal(std::move(literal)) {}
         Literal accept(ASTVisitor& visitor) override;
         ASTNodeType nodeType() override {return LiteralExprNode;}
     };
 
     struct VarExpr: public Expr {
-        std::string variable;
-        explicit VarExpr(std::string variable): variable(std::move(variable)) {}
+        Token variable;
+        explicit VarExpr(Token variable): variable(std::move(variable)) {}
         Literal accept(ASTVisitor& visitor) override;
         ASTNodeType nodeType() override {return VarExprNode;}
     };
 
     struct CallExpr: public Expr {
-        std::string callee;
+        Token callee;
         std::vector<ExprPtr> args;
-        CallExpr(std::string callee, std::vector<ExprPtr> args)
+        CallExpr(Token callee, std::vector<ExprPtr> args)
         :callee(std::move(callee)), args(std::move(args)) {}
         Literal accept(ASTVisitor& visitor) override;
         ASTNodeType nodeType() override {return CallExprNode;}
     };
 
     struct UnaryExpr: public Expr {
-        TokenKind op;
+        Token op;
         ExprPtr rhs;
-        UnaryExpr(TokenKind op, ExprPtr rhs)
-        : op(op), rhs(rhs) {}
+        UnaryExpr(Token op, ExprPtr rhs)
+        : op(std::move(op)), rhs(rhs) {}
         Literal accept(ASTVisitor& visitor) override;
         ASTNodeType nodeType() override {return UnaryExprNode;}
     };
 
     struct BinaryExpr: public Expr {
-        TokenKind op;
+        Token op;
         ExprPtr lhs;
         ExprPtr rhs;
-        BinaryExpr(TokenKind op, ExprPtr lhs, ExprPtr rhs)
-        : op(op), lhs(lhs), rhs(rhs) {}
+        BinaryExpr(Token op, ExprPtr lhs, ExprPtr rhs)
+        : op(std::move(op)), lhs(lhs), rhs(rhs) {}
         Literal accept(ASTVisitor& visitor) override;
         ASTNodeType nodeType() override {return BinaryExprNode;}
     };
@@ -82,28 +80,28 @@ namespace tinyc{
     };
 
     struct FuncDeclStmt: public Stmt {
-        TypeLexemePair function;
-        std::vector<TypeLexemePair> params;
+        TypeTokenPair function;
+        std::vector<TypeTokenPair> params;
         std::vector<StmtPtr> body;
-        FuncDeclStmt(TypeLexemePair function, std::vector<TypeLexemePair> params, std::vector<StmtPtr> body)
+        FuncDeclStmt(TypeTokenPair function, std::vector<TypeTokenPair> params, std::vector<StmtPtr> body)
         : function(std::move(function)), params(std::move(params)), body(std::move(body)) {}
         Literal accept(ASTVisitor& visitor) override;
         ASTNodeType nodeType() override {return FuncDeclStmtNode;}
     };
 
     struct VarDeclStmt: public Stmt {
-        TypeLexemePair variable;
+        TypeTokenPair variable;
         ExprPtr expr;
-        VarDeclStmt(TypeLexemePair variable, ExprPtr expr)
+        VarDeclStmt(TypeTokenPair variable, ExprPtr expr)
         : variable(std::move(variable)), expr(expr) {}
         Literal accept(ASTVisitor& visitor) override;
         ASTNodeType nodeType() override {return VarDeclStmtNode;}
     };
 
     struct AssignStmt: public Stmt {
-        std::string variable;
+        Token variable;
         ExprPtr expr;
-        AssignStmt(std::string variable, ExprPtr expr)
+        AssignStmt(Token variable, ExprPtr expr)
         : variable(std::move(variable)), expr(expr) {}
         Literal accept(ASTVisitor& visitor) override;
         ASTNodeType nodeType() override {return AssignStmtNode;}

@@ -17,13 +17,13 @@ namespace tinyc {
     Literal Interpreter::visit(VarDeclStmt* stmtNode) {
         auto value = evaluate(stmtNode->expr);
         auto valueInfo = new ValueInfo(stmtNode->variable.first, value);
-        environment.setClosureVar(stmtNode->variable.second, valueInfo);
+        environment.setClosureVar(stmtNode->variable.second.lexeme, valueInfo);
         return std::nullopt;
     }
 
     Literal Interpreter::visit(AssignStmt* stmtNode) {
         auto value = evaluate(stmtNode->expr);
-        environment.setClosureVar(stmtNode->variable, value);
+        environment.setClosureVar(stmtNode->variable.lexeme, value);
         return std::nullopt;
     }
 

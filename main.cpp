@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Parse/Parser.hpp"
 #include "Interpreter/Interpreter.hpp"
+#include "AST/ASTDumper.hpp"
 #include "boost/program_options.hpp"
 
 namespace bpo = boost::program_options;
@@ -18,6 +19,8 @@ void parseCommandLineOption(const bpo::variables_map &vm, const bpo::options_des
         filename = vm["file"].as<std::string>();
         tinyc::Parser parser(filename);
         if(vm.count("ast-dump")) {
+            tinyc::ASTDumper dumper(parser);
+            dumper.dump();
         }
         tinyc::Interpreter interpreter(parser);
         interpreter.interpret();
@@ -34,8 +37,7 @@ int main(int argc, const char* argv[]){
     description.add_options()
             ("help, h", "Help Screen")
             ("file, f", bpo::value<std::string>(), "filename")
-            ("interpret", "call for interpreter")
-            ("ast-dump", "print nested AST");
+            ("ast-dump", "Print nested AST");
     bpo::store(bpo::parse_command_line(argc, argv, description), vm);
     parseCommandLineOption(vm, description);
 }

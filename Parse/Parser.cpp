@@ -16,6 +16,7 @@ namespace tinyc{
     std::vector<StmtPtr> Parser::parse() {
         std::vector<StmtPtr> globals;
         while(!isAtEnd()) globals.push_back(parseGlobal());
+        current = tokens.begin();
         return globals;
     }
 

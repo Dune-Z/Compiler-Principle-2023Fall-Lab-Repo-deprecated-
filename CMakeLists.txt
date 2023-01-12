@@ -33,7 +33,7 @@ add_executable(tinyc
         AST/ASTDumper.hpp
         AST/ASTVisitor.cpp
         AST/ASTVisitor.hpp
-        )
+        CodeGen/CGExpr.cpp CodeGen/CGStmt.cpp)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     target_link_libraries(tinyc ${Boost_LIBRARIES})
