@@ -35,7 +35,7 @@ namespace tinyc {
     Literal ASTDumper::visit(LiteralExpr *exprNode) {
         std::cout << std::string(indent, '-');
         std::visit(overload{
-                [](auto arg){std::cout << "\033[35mLiteralExpr\033[0m " << arg;}
+                [](auto arg){std::cout << "\033[36mLiteralExpr\033[0m " << arg;}
         }, exprNode->literal.literal.value());
         std::cout << "\033[33m<line: " << exprNode->literal.line << ">\033[0m\n";
         return std::nullopt;
@@ -43,7 +43,7 @@ namespace tinyc {
 
     Literal ASTDumper::visit(VarExpr* exprNode) {
         std::cout << std::string(indent, '-');
-        std::cout << "\033[35mVarExpr\033[0m " << exprNode->variable.lexeme;
+        std::cout << "\033[36mVarExpr\033[0m " << exprNode->variable.lexeme;
         std::cout << "\033[33m<line: " << exprNode->variable.line << ">\033[0m\n";
         return std::nullopt;
     }
@@ -150,6 +150,7 @@ namespace tinyc {
         indent -= 1;
         return std::nullopt;
     }
+
     Literal ASTDumper::visit(AssignStmt* stmtNode) {
         std::cout << std::string(indent, '-');
         std::cout << "\033[32mAssignStmt\033[0m " << stmtNode->variable.lexeme;
@@ -159,6 +160,7 @@ namespace tinyc {
         indent -= 1;
         return std::nullopt;
     }
+
     Literal ASTDumper::visit(IfStmt* stmtNode) {
         std::cout << std::string(indent, '-');
         std::cout << "\033[32mIfStmt \033[0m\n";
@@ -169,6 +171,7 @@ namespace tinyc {
         indent -= 1;
         return std::nullopt;
     }
+
     Literal ASTDumper::visit(WhileStmt* stmtNode) {
         std::cout << std::string(indent, '-');
         std::cout << "\033[32mWhileStmt\033[0m\n";
@@ -177,6 +180,7 @@ namespace tinyc {
         indent -= 1;
         return std::nullopt;
     }
+
     Literal ASTDumper::visit(BlockStmt* stmtNode) {
         std::cout << std::string(indent, '-');
         std::cout << "\033[32mBlockStmt\033[0m\n";
@@ -185,6 +189,7 @@ namespace tinyc {
         indent -= 1;
         return std::nullopt;
     }
+
     Literal ASTDumper::visit(ReturnStmt* stmtNode) {
         std::cout << std::string(indent, '-');
         std::cout << "\033[32mReturnStmt\033[0m\n";
@@ -193,6 +198,7 @@ namespace tinyc {
         indent -= 1;
         return std::nullopt;
     }
+
     Literal ASTDumper::visit(PrintStmt* stmtNode) {
         std::cout << std::string(indent, '-');
         std::cout << "\033[32mPrintStmt\033[0m\n";
