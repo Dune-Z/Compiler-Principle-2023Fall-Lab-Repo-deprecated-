@@ -1,0 +1,13 @@
+int fib(int k) {
+    if(k == 0 || k == 1) {
+        return 1;
+    } else {
+        return fib(k - 1) + fib(k - 2);
+    }
+}
+
+int main() {
+    int k = 9;
+    int fibResult = fib(k / 2 + 1);
+    print(fibResult);
+}

@@ -33,7 +33,18 @@ add_executable(tinyc
         AST/ASTDumper.hpp
         AST/ASTVisitor.cpp
         AST/ASTVisitor.hpp
-        CodeGen/CGExpr.cpp CodeGen/CGStmt.cpp)
+        CodeGen/CGExpr.cpp
+        CodeGen/CGStmt.cpp
+        Sema/Sema.cpp 
+        Sema/Sema.hpp 
+        Sema/Scope.cpp 
+        Sema/Scope.hpp 
+        Sema/Lookup.cpp 
+        Sema/Lookup.hpp 
+        Sema/IdentifierTable.cpp 
+        Sema/IdentifierTable.hpp
+        )
+
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     target_link_libraries(tinyc ${Boost_LIBRARIES})

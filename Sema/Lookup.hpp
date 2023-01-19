@@ -1,0 +1,4 @@
+#ifndef TINYC_LOOKUP_HPP
+#define TINYC_LOOKUP_HPP
+
+#endif //TINYC_LOOKUP_HPP
