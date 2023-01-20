@@ -1,0 +1,3 @@
+/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/build/CMakeFiles/tinyc.dir
+/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/build/CMakeFiles/edit_cache.dir
+/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/build/CMakeFiles/rebuild_cache.dir
