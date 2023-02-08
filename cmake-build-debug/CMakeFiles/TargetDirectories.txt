@@ -1,3 +1,6 @@
-/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug/CMakeFiles/tinyc.dir
-/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug/CMakeFiles/intrinsics_gen.dir
+/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug/CMakeFiles/omp_gen.dir
+/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug/CMakeFiles/acc_gen.dir
+/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug/CMakeFiles/TinycCompiler.dir
+/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug/CMakeFiles/rebuild_cache.dir

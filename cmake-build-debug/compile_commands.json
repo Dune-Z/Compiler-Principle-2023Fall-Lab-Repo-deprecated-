@@ -1,77 +1,67 @@
 [
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/main.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/main.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/main.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/main.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/main.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/main.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/Lex/Token.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Lex/Token.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Lex/Token.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/Lex/Lexer.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/Lex/Lexer.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/Lex/Lexer.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/Lex/Lexer.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Lex/Lexer.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Lex/Lexer.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/Lex/Tokens.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/Lex/Tokens.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/Lex/Tokens.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/Parse/Parser.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Parse/Parser.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Parse/Parser.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/Parse/Parser.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/Parse/Parser.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/Parse/Parser.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/Parse/ParseStmt.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Parse/ParseStmt.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Parse/ParseStmt.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/AST/AST.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/AST/AST.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/AST/AST.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/Parse/ParseExpr.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Parse/ParseExpr.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Parse/ParseExpr.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/AST/Dumper.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/AST/Dumper.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/AST/Dumper.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/Interpreter/Interpreter.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Interpreter/Interpreter.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Interpreter/Interpreter.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/AST/Decl.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/AST/Decl.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/AST/Decl.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/Interpreter/Environment.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Interpreter/Environment.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Interpreter/Environment.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/AST/Stmt.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/AST/Stmt.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/AST/Stmt.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/Interpreter/InterpretStmt.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Interpreter/InterpretStmt.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Interpreter/InterpretStmt.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/AST/Expr.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/AST/Expr.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/AST/Expr.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/Interpreter/InterpretExpr.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Interpreter/InterpretExpr.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/Interpreter/InterpretExpr.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/Parse/ParseDecl.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/Parse/ParseDecl.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/Parse/ParseDecl.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/AST/AST.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/AST/AST.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/AST/AST.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/Parse/ParseStmt.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/Parse/ParseStmt.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/Parse/ParseStmt.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/AST/ASTDumper.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/AST/ASTDumper.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/AST/ASTDumper.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/Parse/ParseExpr.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/Parse/ParseExpr.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/Parse/ParseExpr.cpp"
 },
 {
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/AST/ASTVisitor.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/AST/ASTVisitor.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/AST/ASTVisitor.cpp"
-},
-{
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/CodeGen/CGExpr.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/CodeGen/CGExpr.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/CodeGen/CGExpr.cpp"
-},
-{
-  "directory": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/. -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17 -o CMakeFiles/tinyc.dir/CodeGen/CGStmt.cpp.o -c /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/CodeGen/CGStmt.cpp",
-  "file": "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/CodeGen/CGStmt.cpp"
+  "directory": "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_PROGRAM_OPTIONS_NO_LIB -I/opt/homebrew/opt/llvm/include -I/Users/zuoyifei/Desktop/TinycCompiler/. -I/opt/homebrew/opt/llvm/lib -isystem /opt/homebrew/include  -fno-omit-frame-pointer -fsanitize=address -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/TinycCompiler.dir/CodeGen/CodeGen.cpp.o -c /Users/zuoyifei/Desktop/TinycCompiler/CodeGen/CodeGen.cpp",
+  "file": "/Users/zuoyifei/Desktop/TinycCompiler/CodeGen/CodeGen.cpp"
 }
 ]

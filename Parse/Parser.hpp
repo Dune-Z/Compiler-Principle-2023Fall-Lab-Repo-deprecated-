@@ -1,71 +1,80 @@
-#ifndef TINYC_PARSER_HPP
-#define TINYC_PARSER_HPP
-#include "Lex/Lexer.hpp"
-#include "Lex/Token.hpp"
+#ifndef TINYCCOMPILER_PARSER_HPP
+#define TINYCCOMPILER_PARSER_HPP
 #include "AST/AST.hpp"
+#include "Lex/Tokens.hpp"
+#include <string>
 #include <vector>
-namespace tinyc{
-    class Parser {
-    private:
-        std::vector<Token> tokens;
-        std::vector<Token>::const_iterator current;
-        bool isAtEnd();
-        bool check(TokenKind type);
-        Token consume(TokenKind type, std::string&& message);
 
-        Token advance();
-        Token previous();
-        Token lookahead();
+namespace tinyc {
+class Parser {
+private:
+  std::vector<TokenInfo> tokens;
+  std::vector<TokenInfo>::const_iterator current;
+  [[nodiscard]] bool isAtEnd() const;
+  [[nodiscard]] bool check(TokenKind kind) const;
+  TokenInfo consume(TokenKind kind, std::string&& message);
 
-        template<typename Head, typename... Tails>
-        bool match(const Head& head, const Tails&... tails);
-        template<typename Head>
-        bool match(const Head& head);
+  TokenInfo advance();
+  [[nodiscard]] TokenInfo previous() const;
+  [[nodiscard]] TokenInfo lookahead() const;
 
-        ExprPtr parseExpr();
-        ExprPtr parseLogicOrExpr();
-        ExprPtr parseLogicAndExpr();
-        ExprPtr parseEqualityExpr();
-        ExprPtr parseComparisonExpr();
-        ExprPtr parseTermExpr();
-        ExprPtr parseFactorExpr();
-        ExprPtr parseUnaryExpr();
-        ExprPtr parseCallExpr();
-        ExprPtr parseCallExpr(const Token &callee);
-        ExprPtr parsePrimaryExpr();
+  template<typename Head, typename... Tails>
+  bool match(const Head& head, const Tails&... tails);
+  template<typename Head>
+  bool match(const Head& head);
 
-        StmtPtr parseGlobal();
-        StmtPtr parseVarDecl();
-        StmtPtr parseVarDecl(const TypeTokenPair& variable);
-        StmtPtr parseFuncDecl(const TypeTokenPair& function);
-        StmtPtr parseStmt();
-        StmtPtr parseIfStmt();
-        StmtPtr parseWhileStmt();
-        StmtPtr parseAssignStmt(const Token &variable);
-        StmtPtr parseReturnStmt();
-        StmtPtr parsePrintStmt();
-        std::vector<StmtPtr> parseBlockStmt();
+  // Parse AST in recursive descend manner.
+  // Grammar: See document.
+  DeclPtr parseDecl();
+  DeclPtr parseVarDecl();
+  FuncDecl* parseFuncDecl();
+  ParaDecl* parseParaDecl();
+  DeclPtr parseStructDecl();
 
-    public:
-        explicit Parser(const std::string &filename);
-        std::vector<StmtPtr> parse();
-    };
+  StmtPtr parseStmt();
+  CompoundStmt* parseCompoundStmt();
+  DeclStmt* parseDeclStmt();
+  ExprStmt* parseExprStmt();
+  IfStmt* parseIfStmt();
+  WhileStmt* parseWhileStmt();
+  ReturnStmt* parseReturnStmt();
+  PrintStmt* parsePrintStmt();
 
-    template <typename Head, typename... Tails>
-    bool Parser::match(const Head &head, const Tails &...tails) {
-        if(check(head)){
-            advance();
-            return true;
-        } else return match(tails...);
-    }
+  ExprPtr parseExpr();
+  ExprPtr parseAssignExpr();
+  ListExpr* parseListExpr();
+  ListExpr* parseArgsExpr();
+  ExprPtr parseLogicOrExpr();
+  ExprPtr parseLogicAndExpr();
+  ExprPtr parseEqualityExpr();
+  ExprPtr parseComparisonExpr();
+  ExprPtr parseTermExpr();
+  ExprPtr parseFactorExpr();
+  ExprPtr parseUnaryExpr();
+  ExprPtr parseCallExpr();
+  ExprPtr parsePrimaryExpr();
 
-    template <typename Head>
-    bool Parser::match(const Head &head) {
-        if(check(head)){
-            advance();
-            return true;
-        } else return false;
-    }
+
+public:
+  explicit Parser(const std::string &filename);
+  std::vector<DeclPtr> parse();
+};
+
+template <typename Head, typename... Tails>
+bool Parser::match(const Head &head, const Tails &...tails) {
+  if(check(head)){
+    advance();
+    return true;
+  } else return match(tails...);
 }
 
-#endif //TINYC_PARSER_HPP
+template <typename Head>
+bool Parser::match(const Head &head) {
+  if(check(head)){
+    advance();
+    return true;
+  } else return false;
+}
+}
+
+#endif //TINYCCOMPILER_PARSER_HPP

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter
+# Install script for directory: /Users/zuoyifei/Desktop/TinycCompiler
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/zuoyifei/Documents/Dev/CMinus/tinyc_interpreter/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/zuoyifei/Desktop/TinycCompiler/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

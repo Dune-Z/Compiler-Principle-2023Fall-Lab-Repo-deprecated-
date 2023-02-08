@@ -1,35 +1,35 @@
 #include "Parser.hpp"
-#include <sstream>
+#include "Lex/Lexer.hpp"
 #include <fstream>
+#include <sstream>
+namespace tinyc {
+Parser::Parser(const std::string &filename) {
+  std::ifstream file(filename);
+  std::stringstream buffer;
+  buffer << file.rdbuf();
+  const std::string source(buffer.str());
+  Lexer lexer(source);
+  tokens = lexer.scanTokens();
+  current = tokens.begin();
+}
 
-namespace tinyc{
-    Parser::Parser(const std::string &filename) {
-        std::ifstream file(filename);
-        std::stringstream buffer;
-        buffer << file.rdbuf();
-        const std::string source(buffer.str());
-        Lexer lexer(source);
-        tokens = lexer.scanTokens();
-        current = tokens.begin();
-    }
+std::vector<DeclPtr> Parser::parse() {
+  std::vector<DeclPtr> decls;
+  while(!isAtEnd()) decls.push_back(parseDecl());
+  current = tokens.begin();
+  return decls;
+}
 
-    std::vector<StmtPtr> Parser::parse() {
-        std::vector<StmtPtr> globals;
-        while(!isAtEnd()) globals.push_back(parseGlobal());
-        current = tokens.begin();
-        return globals;
-    }
-
-    bool Parser::isAtEnd() {return current->type == TOKEN_EOF;}
-    bool Parser::check(TokenKind type) {return type == lookahead().type;}
-    Token Parser::consume(TokenKind type, std::string &&message) {
-        if(check(type)) return advance();
-        throw std::runtime_error(message);
-    }
-    Token Parser::advance() {
-        if(!isAtEnd()) current++;
-        return previous();
-    }
-    Token Parser::previous() {return *(current - 1);}
-    Token Parser::lookahead() {return *current;}
+bool Parser::isAtEnd() const { return current->getKind() == FEOF; }
+bool Parser::check(TokenKind kind) const { return lookahead().getKind() == kind; }
+TokenInfo Parser::consume(TokenKind kind, std::string &&message) {
+  if(check(kind)) return advance();
+  throw std::runtime_error(message);
+}
+TokenInfo Parser::advance() {
+  if(!isAtEnd()) current++;
+  return previous();
+}
+TokenInfo Parser::previous() const { return *(current - 1); }
+TokenInfo Parser::lookahead() const { return *current; }
 }
