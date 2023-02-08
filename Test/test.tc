@@ -2,7 +2,7 @@ struct Info {
     name: str,
     index: int,
     count: int
-};
+}
 
 fn max(a: int, b: int) -> int {
     if(a >= b) {return a;}

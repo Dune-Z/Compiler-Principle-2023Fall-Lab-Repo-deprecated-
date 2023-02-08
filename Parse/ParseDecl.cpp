@@ -80,7 +80,7 @@ DeclPtr Parser::parseStructDecl() {
     if(match(RIGHT_BRACE)) break;
     consume(COMMA, "Expect ','.");
   }
-  consume(SEMICOLON, "Expect ';'");
+//  consume(SEMICOLON, "Expect ';'");
   return new StructDecl(structure, nameToken, members);
 }
 }
